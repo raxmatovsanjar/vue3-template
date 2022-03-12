@@ -1,0 +1,151 @@
+//!<Info>============================================================================================
+// Convert fonts: https://transfonter.org/
+// font-weight:100-thin,200-UltraLite,300-light,400-normal-regular,500-medium,600-semibold,700-bold,800-Heavy,900-black
+//&display=swap&subset=cyrillic-ext
+// line-height: calc( line-height / font-size * 100% ); try to use it, it will be better in responsive
+// https://picsum.photos/200/200 // use it for images
+$container: 1200;
+//!</Info>============================================================================================
+
+//!<Helper-Styles>====================================================================================
+// this animation for page routing
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.4s ease-in-out;
+}
+.scale-enter,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease-in-out;
+}
+.translate-enter-active,
+.translate-leave-active {
+  transition: all 0.4s ease-in-out;
+}
+.translate-enter {
+  opacity: 0;
+  position: absolute;
+  right: -100%;
+  transform: translate3d(-70%, 0, 0);
+}
+.translate-enter-to {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.translate-leave {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.translate-leave-to {
+  opacity: 0;
+  transform: translate3d(70%, 0, 0);
+}
+// ---
+svg,
+svg * {
+  transition: all 0.35s ease-in-out;
+}
+.transition {
+  transition: all 0.35s ease-in-out;
+}
+.center {
+  @include center();
+}
+@for $i from 1 through 10 {
+  .line-clamp-#{$i} {
+    word-break: break-word !important;
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: $i !important;
+  }
+}
+//!<Helper-Styles>====================================================================================
+
+//!<Settings-Styles>==================================================================================
+.container {
+  max-width: $container + 30 + px;
+  width: 100%;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  @media (max-width: 1280px) {
+    max-width: 1280px;
+  }
+  @media (max-width: 1024px) {
+    max-width: 1024px;
+  }
+  @media (max-width: 768px) {
+    max-width: 768px;
+  }
+  @media (max-width: 640px) {
+    max-width: 100%;
+  }
+}
+:root {
+  @include adaptiv(font-size, 1, 0.65);
+}
+html {
+  min-height: 100vh;
+  font-family: $fontFamily, sans-serif;
+  font-style: normal;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  &._lock {
+    overflow: hidden !important;
+    padding-right: 5px;
+    @media (max-width: 1024px) {
+      padding-right: 0;
+    }
+  }
+  * {
+    outline: none !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  & body,
+  & #__nuxt,
+  & #__layout {
+    font-size: 16px;
+    min-height: 100vh;
+    input,
+    textarea {
+      @media (max-width: 600px) {
+        font-size: 16px !important;
+      }
+    }
+  }
+  & .wrapper {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background: #fff;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #000;
+    border-radius: 5px;
+  }
+  ::selection {
+    background: rgba(37, 100, 255, 0.15);
+  }
+  // hide arrows in input type number
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+//!<Settings-Styles>==================================================================================
