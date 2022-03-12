@@ -1,7 +1,7 @@
 export const routes = [
   {
     path: '/',
-    meta: { title: 'Home' },
-    components: () => import('./pages/home.vue')
+    meta: { title: 'Assets' },
+    components: () => import('./pages/assets.vue')
   }
 ];

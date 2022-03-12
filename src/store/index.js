@@ -1,5 +1,8 @@
-export const state = () => ({});
-
-export const mutations = {};
-
-export const actions = {};
+import { createStore } from 'vuex';
+export default createStore({
+  state: {},
+  mutations: {},
+  getters: {},
+  actions: {},
+  modules: {}
+});

@@ -2,7 +2,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 const app = createApp(App);
-import '~/assets/styles/main.scss';
+// import '~/assets/styles/main.scss';
 
 // !Plugins settings
 // Plugin: dayjs
@@ -22,8 +22,6 @@ import uz from '~/json/uz.json';
 const locale = localStorage.getItem('locale') || 'uz';
 const i18n = createI18n({
   locale: locale,
-  fallbackLocale: 'ru',
-  silentFallbackWarn: true,
   messages: {
     uz
   }
