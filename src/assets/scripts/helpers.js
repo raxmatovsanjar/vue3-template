@@ -1,4 +1,24 @@
-import vue from 'vue';
+// import vue from 'vue';
+
+// paste to clipboard
+export async function paste(item) {
+  if (navigator?.clipboard && item) {
+    await navigator.clipboard.readText().then(text => {
+      this[item] = text;
+    });
+  } else {
+    alert('Your browser does not support clipboard, change url to localhost');
+  }
+}
+
+// copy from clipboard
+export async function copy(value) {
+  if (navigator?.clipboard) {
+    await navigator.clipboard.writeText(value).then(() => {});
+  } else {
+    alert('Your browser does not support clipboard, change url to localhost');
+  }
+}
 
 // check data is empty
 export function isEmpty(data) {
@@ -6,43 +26,9 @@ export function isEmpty(data) {
   else if (Array.isArray(data) && data.length === 0) return false;
   else if (typeof data === 'object') {
     if (Object.keys(data).length === 0) return false;
-    return Object.values(data).every(v => vue.prototype.$isEmpty(v) === true);
+    return Object.values(data).every(v => isEmpty(v) === true);
   } else return true;
 }
-
-// return meta tags for SEO
-// export function meteTags (title, description, image, link) {
-//   return {
-//     title: title,
-//     meta: [
-//       {
-//         hid: "description",
-//         name: "description",
-//         content: description,
-//       },
-//       {
-//         hid: "og:title",
-//         property: "og:title",
-//         content: title,
-//       },
-//       {
-//         hid: "og:description",
-//         property: "og:description",
-//         content: description,
-//       },
-//       {
-//         hid: "og:image",
-//         property: "og:image",
-//         content: require(image),
-//       },
-//       {
-//         hid: "og:url",
-//         property: "og:url",
-//         content: link,
-//       },
-//     ],
-//   };
-// };
 
 // change file to base64
 export function fileToLink(data) {
@@ -98,6 +84,7 @@ export function validateForm(form, name = 'form') {
   }
 }
 
+// Check mobile phone is real or not
 export function isPhone(value) {
   if (value) {
     return true;
@@ -112,3 +99,37 @@ export function isPhone(value) {
     }
   } catch {}
 }
+
+// return meta tags for SEO
+// export function meteTags (title, description, image, link) {
+//   return {
+//     title: title,
+//     meta: [
+//       {
+//         hid: "description",
+//         name: "description",
+//         content: description,
+//       },
+//       {
+//         hid: "og:title",
+//         property: "og:title",
+//         content: title,
+//       },
+//       {
+//         hid: "og:description",
+//         property: "og:description",
+//         content: description,
+//       },
+//       {
+//         hid: "og:image",
+//         property: "og:image",
+//         content: require(image),
+//       },
+//       {
+//         hid: "og:url",
+//         property: "og:url",
+//         content: link,
+//       },
+//     ],
+//   };
+// };

@@ -1,31 +1,23 @@
-$fontFamily: 'Roboto';
-$maxWidth: 1440; // its default for uic :)
 //!<Mixins>==========================================================================================
 @mixin adaptiv($type, $pcSize, $mobSize, $important: false) {
-	$value: calc(
-		#{$mobSize + px} + #{$pcSize - $mobSize} *
-			((100vw - 320px) / #{$maxWidth - 320})
-	);
-	@if $important == false {
-		#{$type}: $pcSize + px;
-		@media (max-width: #{$maxWidth + px}) {
-			#{$type}: $value;
-		}
-	} @else {
-		#{$type}: $pcSize + px !important;
-		@media (max-width: #{$maxWidth + px}) {
-			#{$type}: $value !important;
-		}
-	}
-}
-@mixin center {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  $value: calc(
+    #{$mobSize + px} + #{$pcSize - $mobSize} * ((100vw - 320px) / #{1440- 320})
+  );
+  @if $important == false {
+    #{$type}: $pcSize + px;
+    @media (max-width: 1440px) {
+      #{$type}: $value;
+    }
+  } @else {
+    #{$type}: $pcSize + px !important;
+    @media (max-width: 1440px) {
+      #{$type}: $value !important;
+    }
+  }
 }
 @mixin media($size, $type: 'max-width') {
-	@media only screen and (#{$type}: #{$size + px}) {
-		@content;
-	}
+  @media only screen and (#{$type}: #{$size + px}) {
+    @content;
+  }
 }
 //!<Mixins>==========================================================================================

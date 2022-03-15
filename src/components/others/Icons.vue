@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import icons from '@/json/icons.js';
 export default {
   props: {
     name: {
@@ -14,10 +15,22 @@ export default {
       default: ''
     }
   },
+  mounted() {
+    if (this.color) {
+      this.$el.firstChild.querySelectorAll('path').forEach(item => {
+        if ([...item.attributes].find(attr => attr.localName === 'stroke')) {
+          item.attributes.stroke.value = this.color;
+        }
+        if ([...item.attributes].find(attr => attr.localName === 'fill')) {
+          item.attributes.fill.value = this.color;
+        }
+      });
+    }
+  },
   computed: {
     src() {
       if (this.name) {
-        return require('~/json/icons.js').default[this.name];
+        return icons[this.name];
       }
     }
   }

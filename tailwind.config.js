@@ -1,13 +1,20 @@
 const screens = {};
+const spacing = {};
 for (let i = 1440; i >= 320; i--) {
-	screens[`-${i}`] = { max: `${i}px` };
+  screens[`-${i}`] = { max: `${i}px` };
+}
+for (let i = 1000; i >= 0; i--) {
+  spacing[`${i}`] = `${i}rem`;
 }
 module.exports = {
   mode: 'jit',
   theme: {
     extend: {
+      spacing: { ...spacing },
+      colors: {
+        black: '#000000'
+      },
       screens: {
-        '2xl': { max: '1536px' },
         xl: { max: '1280px' },
         lg: { max: '1024px' },
         md: { max: '768px' },
@@ -18,11 +25,8 @@ module.exports = {
       }
     }
   },
-  content: [
-    './components/**/*.{js,vue,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}'
-  ]
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  corePlugins: {
+    preflight: false
+  }
 };

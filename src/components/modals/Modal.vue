@@ -10,7 +10,7 @@ export default {
     value: { type: Boolean, default: false },
     title: { type: String, default: 'Modal' },
     width: { type: String, default: '50%' },
-    top: { type: String, default: '50vh' },
+    top: { type: String, default: '40vh' },
     fullscreen: { type: Boolean, default: false }
   },
   watch: {
