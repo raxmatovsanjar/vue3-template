@@ -1,7 +1,7 @@
-<script>
-export default {};
-</script>
+<script></script>
 
-<template>index</template>
+<template>
+  <Field />
+</template>
 
 <style></style>
