@@ -45,11 +45,7 @@ export default {
   align-items: center;
   justify-content: center;
   background: #fff;
-  backdrop-filter: saturate(180%) blur(15px);
   padding: 10px;
   transition: all 0.35s ease-in-out;
-  img {
-    z-index: 100001;
-  }
 }
 </style>

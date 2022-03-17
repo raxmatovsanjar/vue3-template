@@ -5,8 +5,6 @@ const app = createApp(App);
 import '@/assets/styles/main.scss';
 
 // !Plugins settings
-// Plugin: dayjs
-import dayjs from 'dayjs';
 // Plugin: router
 import { routes } from '@/routes.js';
 import { createRouter, createWebHistory } from 'vue-router';
@@ -14,8 +12,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 });
-// Plugin: vuex
-import store from '@/store';
+
 // Plugin: i18n
 import { createI18n } from 'vue-i18n';
 import uz from '@/json/uz.json';
@@ -27,9 +24,11 @@ const i18n = createI18n({
   }
 });
 
+// Plugin: v-mask
+import { VueMaskDirective } from 'v-mask';
+app.directive('mask', VueMaskDirective);
+
 // !Plugins register
-app.use(dayjs);
 app.use(router);
-app.use(store);
 app.use(i18n);
 app.mount('#app');
