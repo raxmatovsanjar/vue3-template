@@ -1,40 +1,64 @@
 <template>
-  <div v-if="label" class="flex items-center justify-between gap-8 mb-8">
-    <label
-      :class="classLabel"
-      v-if="label"
-      :for="'input' + this._.uid"
-      class="form__label"
-    >
+  <label
+    v-if="label && !$slots.extra"
+    :class="classLabel"
+    :for="'input' + _.uid"
+    class="form-label mb-8"
+  >
+    {{ label }}
+  </label>
+  <div v-else-if="label" class="flex items-center justify-between gap-8 mb-8">
+    <label :class="classLabel" :for="'input' + _.uid" class="form-label">
       {{ label }}
     </label>
     <slot name="extra"></slot>
   </div>
   <div class="relative w-full">
-    <slot name="left">
-      <div class="addleft">
+    <div class="addleft" v-if="$slots.left || type === 'phone' || iconLeft">
+      <slot name="left">
         <span v-if="type === 'phone'" class="">+998</span>
-      </div>
-    </slot>
-    <slot name="right">
-      <div class="addright">
+        <Icons v-else-if="iconLeft" :name="iconLeft" />
+      </slot>
+    </div>
+    <div
+      class="addright"
+      v-if="$slots.right || type === 'password' || iconRight"
+    >
+      <slot name="right">
         <Icons
           v-if="type === 'password'"
           name="eye"
-          class="eye active"
+          class="cursor-pointer"
           onclick="this.classList.toggle('active')"
           @click="passwordVisible = !passwordVisible"
         />
-      </div>
-    </slot>
+        <Icons v-else-if="iconRight" :name="iconRight" />
+      </slot>
+    </div>
     <textarea
       v-if="type === 'textarea'"
       type="text"
+      class="!h-auto resize-none"
       v-bind="setAttributes"
       v-model="updateValue"
     />
-    <div v-else-if="type === 'select'"></div>
-    <div v-else-if="type === 'date'"></div>
+    <el-select
+      class="form-select"
+      v-else-if="type === 'select'"
+      v-model="updateValue"
+      :disabled="disabled"
+      :placeholder="placeholder"
+      :class="{ _error: this.error }"
+      :multiple="multiple"
+      :filterable="filterable"
+    >
+      <el-option
+        v-for="(item, index) in list"
+        :key="index"
+        :label="item[selectName]"
+        :value="item[selectValue]"
+      />
+    </el-select>
     <input
       v-else-if="type === 'phone'"
       type="text"
@@ -46,12 +70,12 @@
       v-else-if="type === 'money'"
       type="text"
       v-bind="setAttributes"
-      v-mask="'## ### ## ##'"
+      v-mask="'#'"
       v-model="updateValue"
     />
     <input
       v-else-if="type === 'password'"
-      type="password"
+      :type="passwordVisible ? 'password' : 'text'"
       v-bind="setAttributes"
       v-model="updateValue"
     />
@@ -62,7 +86,7 @@
       v-model="updateValue"
     />
     <input
-      v-else-if="mask"
+      v-else-if="type === 'mask'"
       v-bind="setAttributes"
       type="text"
       v-mask="mask"
@@ -76,7 +100,16 @@
 export default {
   props: {
     modelValue: { default: '' }, // any type can be used
+    // select options
+    list: { type: Array, default: () => [{ id: 1, name: 'sanjar' }] },
+    selectName: { type: String, default: 'name' },
+    selectValue: { type: String, default: 'id' },
+    multiple: Boolean,
+    filterable: Boolean,
+    // ---
     mask: String,
+    iconLeft: String,
+    iconRight: String,
     disabled: Boolean,
     error: Boolean,
     label: String,
@@ -84,8 +117,8 @@ export default {
     classLabel: [String, Array],
     maxlength: { type: [String, Number], default: 100 },
     placeholder: [String, Number],
-    // field type
-    type: String // number, textarea, phone, money, select, date, password
+    // field types
+    type: String // mask, number, textarea, phone, money, select, password
   },
   data() {
     return {
@@ -101,17 +134,17 @@ export default {
   computed: {
     setPadding() {
       const padding = [];
-      if (this.type === 'phone') {
+      if (this.$slots.left || this.type === 'phone' || this.iconLeft) {
         padding.push(`padding-left: ${this.paddintInputLeft + 15}px;`);
       }
-      if (this.type === 'password') {
+      if (this.$slots.right || this.type === 'password' || this.iconRight) {
         padding.push(`padding-right: ${this.paddintInputRight + 15}px;`);
       }
       return padding.join('');
     },
     setAttributes() {
       return {
-        id: this._.id,
+        id: 'input' + this._.uid,
         placeholder: this.placeholder,
         maxlength: this.maxlength,
         disabled: this.disabled,
@@ -132,22 +165,9 @@ export default {
 </script>
 
 <style lang="scss">
-.eye {
-  cursor: pointer;
-  .line {
-    width: 1px;
-    height: 0;
-    transition: all 0.35s ease-in-out;
-  }
-  &.active {
-    .line {
-      height: 100%;
-      transition: all 0.35s ease-in-out;
-    }
-  }
-}
 // .form-label
 .form-label {
+  display: inline-block;
   font-weight: 500;
   font-size: 14rem;
   line-height: calc(17 / 14 * 100%);
@@ -184,6 +204,15 @@ export default {
     color: #c0c4cc;
   }
 }
+// .form-select
+.form-select {
+  width: 100%;
+  .el-input__inner {
+    @extend .form-input;
+    --el-input-hover-border-color: transparent !important;
+    --el-select-input-focus-border-color: transparent !important;
+  }
+}
 // .addright
 .addright {
   position: absolute;
@@ -196,7 +225,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.35s ease-in-out;
 }
 // .addleft
 .addleft {
@@ -210,6 +238,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.35s ease-in-out;
 }
 </style>

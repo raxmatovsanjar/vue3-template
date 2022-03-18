@@ -60,6 +60,7 @@ html {
     }
   }
   * {
+    font-family: $fontFamily, sans-serif;
     margin: initial;
     padding: initial;
     outline: none !important;

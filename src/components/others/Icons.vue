@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss">
 i {
-  display: inline-block;
+  display: inline-flex;
   svg {
     width: 100%;
     height: 100%;

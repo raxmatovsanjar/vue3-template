@@ -1,17 +1,7 @@
 <script>
-export default {
-  data() {
-    return {
-      item: null
-    };
-  }
-};
+export default {};
 </script>
 
-<template>
-  <div class="p-10">
-    <Field v-model="item" mask="###" label="label" placeholder="placeholder" />
-  </div>
-</template>
+<template></template>
 
 <style></style>
