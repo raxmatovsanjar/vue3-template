@@ -1,20 +1,36 @@
 <script setup>
 import icons from '@/json/icons.js';
 import { copy } from 'js/helpers.js';
-const components = [];
-console.dir(app);
+const components = import.meta.globEager('../components/**/*.vue');
 </script>
 
 <template>
-  <h2 class="text-[40rem] font-bold mb-10">Icons</h2>
-  <div
-    class="inline-flex items-center gap-5 ml-5"
-    v-for="item in Object.keys(icons)"
-    :key="icons[item]"
-  >
-    <div @click="copy(`<Icons name='${item}'></Icons>`)">{{ item }}:</div>
-    <div v-html="icons[item]" @click="copy(icons[item])"></div>
+  <div class="container">
+    <h2 class="text-[40rem] font-bold my-30">Icons</h2>
+    <div class="grid gap-10">
+      <hr class="mb-5" />
+      <div
+        class="flex items-center justify-around gap-5"
+        v-for="(value, key) in icons"
+        :key="value"
+      >
+        <div class="cursor-pointer" @click="copy(`<Icons name='${key}'/>`)">
+          {{ key }}:
+        </div>
+        <div class="cursor-pointer" v-html="value" @click="copy(value)"></div>
+      </div>
+      <hr class="mt-5" />
+    </div>
+    <h2 class="text-[40rem] font-bold my-30">Components</h2>
+    <div class="grid gap-10">
+      <div v-for="(value, key) in components" :key="key">
+        <hr class="mb-5" />
+        <h3 class="text-center">
+          {{ key }}
+        </h3>
+        <!-- <component :is="key.match(/\.\/components(.*)\.vue$/)[1]" /> -->
+        <hr class="mt-5" />
+      </div>
+    </div>
   </div>
-  <h2 class="text-[40rem] font-bold">Components</h2>
-  <component v-for="component in components" :key="component" :is="component" />
 </template>

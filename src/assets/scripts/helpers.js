@@ -1,4 +1,3 @@
-// import vue from 'vue';
 
 // paste to clipboard
 export async function paste(item) {

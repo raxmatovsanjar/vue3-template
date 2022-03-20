@@ -11,6 +11,11 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     })
   ],
+  css: {
+    preprocessorOptions: {
+      scss: { additionalData: `@import "src/assets/styles/main.scss";` }
+    }
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -21,5 +26,6 @@ export default defineConfig({
   },
   server: {
     open: true
-  }
+  },
+  build: {}
 });

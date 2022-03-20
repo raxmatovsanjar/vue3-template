@@ -1,5 +1,7 @@
 <script>
-export default {};
+export default {
+  layout: 'empty'
+};
 </script>
 
 <template>error</template>

@@ -63,14 +63,14 @@
       v-else-if="type === 'phone'"
       type="text"
       v-bind="setAttributes"
-      v-mask="'## ### ## ##'"
+      data-mask="'## ### ## ##'"
       v-model="updateValue"
     />
     <input
       v-else-if="type === 'money'"
       type="text"
       v-bind="setAttributes"
-      v-mask="'#'"
+      data-mask="'#'"
       v-model="updateValue"
     />
     <input
@@ -89,7 +89,7 @@
       v-else-if="type === 'mask'"
       v-bind="setAttributes"
       type="text"
-      v-mask="mask"
+      :data-mask="mask"
       v-model="updateValue"
     />
     <input v-else type="text" v-bind="setAttributes" v-model="updateValue" />
@@ -189,7 +189,7 @@ export default {
     border: 1px solid red;
   }
   &:focus {
-    border: 1px solid green;
+    border: 1px solid blue;
   }
   &::placeholder {
     font-weight: normal;

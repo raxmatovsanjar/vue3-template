@@ -21,7 +21,9 @@ export default {
     this.pageLoading = true;
   },
   mounted() {
-    this.pageLoading = false;
+    setTimeout(() => {
+      this.pageLoading = false;
+    }, 100);
   }
 };
 </script>

@@ -2,7 +2,6 @@
 import { createApp } from 'vue';
 import App from '@/App.vue';
 const app = createApp(App);
-import '@/assets/styles/main.scss';
 
 // !Plugins settings
 // Plugin: router
@@ -13,22 +12,31 @@ const router = createRouter({
   routes
 });
 
+// Plugin: vuex
+import store from '@/store';
+
 // Plugin: i18n
 import { createI18n } from 'vue-i18n';
 import uz from '@/json/uz.json';
+import ru from '@/json/ru.json';
 const locale = localStorage.getItem('locale') || 'uz';
 const i18n = createI18n({
   locale: locale,
+  legacy: false,
+  globalInjection: true,
+  silentFallbackWarn: true,
   messages: {
-    uz
+    uz,
+    ru
   }
 });
 
-// Plugin: v-mask
-import { VueMaskDirective } from 'v-mask';
-app.directive('mask', VueMaskDirective);
+// Plugin: Maska
+import Maska from 'maska';
+app.use(Maska);
 
 // !Plugins register
 app.use(router);
+app.use(store);
 app.use(i18n);
 app.mount('#app');

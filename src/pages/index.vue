@@ -2,6 +2,6 @@
 export default {};
 </script>
 
-<template></template>
+<template>index</template>
 
 <style></style>
