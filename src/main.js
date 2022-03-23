@@ -2,10 +2,11 @@
 import { createApp } from 'vue';
 import App from '@/App.vue';
 const app = createApp(App);
+import '@/assets/styles/main.css';
 
 // !Plugins settings
 // Plugin: router
-import { routes } from '@/routes.js';
+import routes from '~pages';
 import { createRouter, createWebHistory } from 'vue-router';
 const router = createRouter({
   history: createWebHistory(),
@@ -25,6 +26,7 @@ const i18n = createI18n({
   legacy: false,
   globalInjection: true,
   silentFallbackWarn: true,
+  compositionOnly: false,
   messages: {
     uz,
     ru

@@ -164,7 +164,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="postcss">
 // .form-label
 .form-label {
   display: inline-block;
@@ -208,7 +208,7 @@ export default {
 .form-select {
   width: 100%;
   .el-input__inner {
-    @extend .form-input;
+    @apply .form-input;
     --el-input-hover-border-color: transparent !important;
     --el-select-input-focus-border-color: transparent !important;
   }

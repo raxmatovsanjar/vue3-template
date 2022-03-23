@@ -8,9 +8,8 @@ export default {};
   <Footer />
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 #app {
-  min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;

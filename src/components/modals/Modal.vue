@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="postcss">
 .el-dialog {
   @media (max-width: 550px) {
     width: 90% !important;

@@ -3,9 +3,9 @@ const spacing = {};
 for (let i = 1440; i >= 320; i--) {
   screens[`-${i}`] = { max: `${i}px` };
 }
-for (let i = 1000; i >= 0; i--) {
-  spacing[`${i}`] = `${i}rem`;
-}
+// for (let i = 1000; i >= 0; i--) {
+//   spacing[`${i}`] = `${i}rem`;
+// }
 module.exports = {
   mode: 'jit',
   theme: {
@@ -29,6 +29,7 @@ module.exports = {
     }
   },
   plugins: [
+    require('@tailwindcss/line-clamp'),
     function ({ addComponents }) {
       addComponents({
         '.container': {

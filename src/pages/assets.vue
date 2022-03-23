@@ -25,7 +25,10 @@ const components = import.meta.globEager('../components/**/*.vue');
     <div class="grid gap-10">
       <div v-for="(value, key) in components" :key="key">
         <hr class="mb-5" />
-        <h3 class="text-center">
+        <h3
+          class="text-center cursor-pointer"
+          @click="$el.ownerDocument.defaultView.console.log(value, key)"
+        >
           {{ key }}
         </h3>
         <!-- <component :is="key.match(/\.\/components(.*)\.vue$/)[1]" /> -->

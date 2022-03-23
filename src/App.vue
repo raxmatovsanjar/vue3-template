@@ -21,9 +21,7 @@ export default {
     this.pageLoading = true;
   },
   mounted() {
-    setTimeout(() => {
-      this.pageLoading = false;
-    }, 100);
+    this.pageLoading = false;
   }
 };
 </script>
@@ -35,7 +33,7 @@ export default {
   </component>
 </template>
 
-<style lang="scss">
+<style>
 .loading {
   position: fixed;
   top: 0;

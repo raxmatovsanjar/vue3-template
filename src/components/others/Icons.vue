@@ -37,10 +37,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="postcss">
 i {
   display: inline-flex;
-  svg {
+  & svg {
     width: 100%;
     height: 100%;
   }

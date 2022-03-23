@@ -1,0 +1,12 @@
+/* !<Import Styles>================================================================================= */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'settings.css';
+@layer components {
+}
+/* !</Import Styles>================================================================================ */
+
+/* !<Main-Styles>=================================================================================== */
+/*  Write your main styles here (global styles) */
+/* !<Main-Styles>================================================================================== */
