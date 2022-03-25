@@ -1,1 +1,1 @@
-# vue3-template
+# vue 3 vite tailwind postcss
