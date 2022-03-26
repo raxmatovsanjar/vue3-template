@@ -1,12 +1,12 @@
 // !Main files import
 import { createApp } from 'vue';
-import App from '@/App.vue';
+import App from './App.vue';
 const app = createApp(App);
-import '@/assets/styles/main.css';
+import './assets/styles/main.css';
 
 // !Plugins settings
 // Plugin: router
-import routes from '~pages';
+import routes from 'vite-plugin-pages/pages-generated';
 import { createRouter, createWebHistory } from 'vue-router';
 const router = createRouter({
   history: createWebHistory(),
@@ -14,12 +14,12 @@ const router = createRouter({
 });
 
 // Plugin: vuex
-import store from '@/store';
+import store from './store';
 
 // Plugin: i18n
 import { createI18n } from 'vue-i18n';
-import uz from '@/json/uz.json';
-import ru from '@/json/ru.json';
+import uz from './json/uz.json';
+import ru from './json/ru.json';
 const locale = localStorage.getItem('locale') || 'uz';
 const i18n = createI18n({
   locale: locale,

@@ -16,6 +16,8 @@ export default defineConfig({
     ViteWebfontDownload(),
     viteCompression({ deleteOriginFile: true }),
     Pages({
+      exclude:
+        process.env.NODE_ENV === 'production' ? ['**/pages/assets.vue'] : [],
       extendRoute(route) {
         if (route.path === '/error') {
           return {
@@ -41,7 +43,7 @@ export default defineConfig({
     open: true
   },
   build: {
-    reportCompressedSize: true,
+    reportCompressedSize: false,
     brotliSize: false
   }
 });

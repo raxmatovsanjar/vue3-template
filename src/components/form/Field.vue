@@ -165,7 +165,6 @@ export default {
 </script>
 
 <style lang="postcss">
-// .form-label
 .form-label {
   display: inline-block;
   font-weight: 500;
@@ -173,8 +172,8 @@ export default {
   line-height: calc(17 / 14 * 100%);
   color: black;
 }
-// form-input
-.form-input {
+.form-input,
+.form-select .el-input__inner {
   background: white;
   padding: 10rem 15rem;
   width: 100%;
@@ -204,16 +203,13 @@ export default {
     color: #c0c4cc;
   }
 }
-// .form-select
 .form-select {
   width: 100%;
   .el-input__inner {
-    @apply .form-input;
     --el-input-hover-border-color: transparent !important;
     --el-select-input-focus-border-color: transparent !important;
   }
 }
-// .addright
 .addright {
   position: absolute;
   right: 10px;
@@ -226,7 +222,6 @@ export default {
   align-items: center;
   justify-content: center;
 }
-// .addleft
 .addleft {
   position: absolute;
   left: 10px;

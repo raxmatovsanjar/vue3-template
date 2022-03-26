@@ -1,10 +1,10 @@
 import { ElNotification } from 'element-plus';
 
 // paste to clipboard
-export async function paste(item) {
+export async function paste(item: string) {
   if (navigator?.clipboard && item) {
     await navigator.clipboard.readText().then(text => {
-      this[item] = text;
+      this[`${item}`] = text;
     });
   } else {
     alert('Your browser does not support clipboard, change url to localhost');
@@ -12,7 +12,7 @@ export async function paste(item) {
 }
 
 // copy from clipboard
-export async function copy(value) {
+export async function copy(value:string) {
   if (navigator?.clipboard) {
     await navigator.clipboard.writeText(value).then(() => {});
   } else {
@@ -21,19 +21,19 @@ export async function copy(value) {
 }
 
 // change file to base64
-export function fileToLink(data) {
+export function fileToLink(data: File) {
   if (data) {
     return URL.createObjectURL(data);
   }
 }
 
 // Return a number with spaces
-export function numberWithSpaces(number) {
+export function numberWithSpaces(number: number) {
   return number && number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
 // Validate form and show errors with notification
-export function validateForm(form, name = 'form') {
+export function validateForm(form: any, name: string = 'form') {
   const formKeys = Object.keys(form.$model);
   const params = form.$flattenParams().map(item => item.name);
   for (const element of formKeys.length ? formKeys : ['none']) {
@@ -41,16 +41,16 @@ export function validateForm(form, name = 'form') {
       if (
         form[element] &&
         Object.hasOwnProperty.call(form[element], item) &&
-        !form[element][item]
+        !form[element][`${item}`]
       ) {
         const text = `${name}-${element}-${item}`.replace(/[-]/g, '_');
-        return ElNotification({ color: 'danger', title: 'Error', text });
-      } else if (Object.hasOwnProperty.call(form, item) && !form[item]) {
+        return ElNotification({ type: 'error', title: 'Error', message: text });
+      } else if (Object.hasOwnProperty.call(form, item) && !form[`${item}`]) {
         const text = `${name}-${item}`.replace(/[-]/g, '_');
         return ElNotification({
-          color: 'danger',
+          type: 'error',
           title: 'Error',
-          text
+          message: text
         });
       }
     }
