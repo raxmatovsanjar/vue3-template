@@ -1,20 +1,22 @@
 // !Main files import
 import { createApp } from 'vue';
+import './assets/styles/main.css';
 import App from './App.vue';
 const app = createApp(App);
-import './assets/styles/main.css';
 
 // !Plugins settings
 // Plugin: router
-import routes from 'vite-plugin-pages/pages-generated';
+import routes from 'pages-generated';
 import { createRouter, createWebHistory } from 'vue-router';
 const router = createRouter({
   history: createWebHistory(),
   routes
 });
+app.use(router);
 
-// Plugin: vuex
-import store from './store';
+// Plugin: pinia
+import { createPinia } from 'pinia';
+app.use(createPinia());
 
 // Plugin: i18n
 import { createI18n } from 'vue-i18n';
@@ -32,13 +34,11 @@ const i18n = createI18n({
     ru
   }
 });
+app.use(i18n);
 
 // Plugin: Maska
 import Maska from 'maska';
 app.use(Maska);
 
-// !Plugins register
-app.use(router);
-app.use(store);
-app.use(i18n);
+// End
 app.mount('#app');

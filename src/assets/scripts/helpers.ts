@@ -1,10 +1,10 @@
 import { ElNotification } from 'element-plus';
 
 // paste to clipboard
-export async function paste(item: string) {
-  if (navigator?.clipboard && item) {
+export async function paste() {
+  if (navigator?.clipboard) {
     await navigator.clipboard.readText().then(text => {
-      this[`${item}`] = text;
+      return text;
     });
   } else {
     alert('Your browser does not support clipboard, change url to localhost');
@@ -12,7 +12,7 @@ export async function paste(item: string) {
 }
 
 // copy from clipboard
-export async function copy(value:string) {
+export async function copy(value: string): Promise<void> {
   if (navigator?.clipboard) {
     await navigator.clipboard.writeText(value).then(() => {});
   } else {
@@ -35,17 +35,22 @@ export function numberWithSpaces(number: number) {
 // Validate form and show errors with notification
 export function validateForm(form: any, name: string = 'form') {
   const formKeys = Object.keys(form.$model);
-  const params = form.$flattenParams().map(item => item.name);
+  const params = form
+    .$flattenParams()
+    .map((item: { name: string }) => item.name);
   for (const element of formKeys.length ? formKeys : ['none']) {
     for (const item of [...new Set(params)]) {
       if (
         form[element] &&
-        Object.hasOwnProperty.call(form[element], item) &&
+        Object.hasOwnProperty.call(form[element], `${item}`) &&
         !form[element][`${item}`]
       ) {
         const text = `${name}-${element}-${item}`.replace(/[-]/g, '_');
         return ElNotification({ type: 'error', title: 'Error', message: text });
-      } else if (Object.hasOwnProperty.call(form, item) && !form[`${item}`]) {
+      } else if (
+        Object.hasOwnProperty.call(form, `${item}`) &&
+        !form[`${item}`]
+      ) {
         const text = `${name}-${item}`.replace(/[-]/g, '_');
         return ElNotification({
           type: 'error',
