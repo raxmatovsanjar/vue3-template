@@ -1,3 +1,71 @@
+<script>
+export default {
+  props: {
+    modelValue: { default: '' }, // any type can be used
+    // select options
+    list: { type: Array, default: () => [{ id: 1, name: 'sanjar' }] },
+    selectName: { type: String, default: 'name' },
+    selectValue: { type: String, default: 'id' },
+    multiple: Boolean,
+    filterable: Boolean,
+    // ---
+    mask: String,
+    iconLeft: String,
+    iconRight: String,
+    disabled: Boolean,
+    error: Boolean,
+    label: String,
+    classInput: [String, Array],
+    classLabel: [String, Array],
+    maxlength: { type: [String, Number], default: 100 },
+    placeholder: [String, Number],
+    // field types
+    type: String // mask, number, textarea, phone, money, select, password
+  },
+  data() {
+    return {
+      passwordVisible: true,
+      paddintInputRight: '',
+      paddintInputLeft: ''
+    };
+  },
+  mounted() {
+    this.paddintInputRight = document?.querySelector('.addright')?.clientWidth;
+    this.paddintInputLeft = document?.querySelector('.addleft')?.clientWidth;
+  },
+  computed: {
+    setPadding() {
+      const padding = [];
+      if (this.$slots.left || this.type === 'phone' || this.iconLeft) {
+        padding.push(`padding-left: ${this.paddintInputLeft + 15}px;`);
+      }
+      if (this.$slots.right || this.type === 'password' || this.iconRight) {
+        padding.push(`padding-right: ${this.paddintInputRight + 15}px;`);
+      }
+      return padding.join('');
+    },
+    setAttributes() {
+      return {
+        id: 'input' + this._.uid,
+        placeholder: this.placeholder,
+        maxlength: this.maxlength,
+        disabled: this.disabled,
+        class: ['form-input', this.classInput, { _error: this.error }],
+        style: this.setPadding
+      };
+    },
+    updateValue: {
+      get() {
+        return this.modelValue;
+      },
+      set(value) {
+        this.$emit('update:modelValue', value);
+      }
+    }
+  }
+};
+</script>
+
 <template>
   <label
     v-if="label && !$slots.extra"
@@ -95,74 +163,6 @@
     <input v-else type="text" v-bind="setAttributes" v-model="updateValue" />
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    modelValue: { default: '' }, // any type can be used
-    // select options
-    list: { type: Array, default: () => [{ id: 1, name: 'sanjar' }] },
-    selectName: { type: String, default: 'name' },
-    selectValue: { type: String, default: 'id' },
-    multiple: Boolean,
-    filterable: Boolean,
-    // ---
-    mask: String,
-    iconLeft: String,
-    iconRight: String,
-    disabled: Boolean,
-    error: Boolean,
-    label: String,
-    classInput: [String, Array],
-    classLabel: [String, Array],
-    maxlength: { type: [String, Number], default: 100 },
-    placeholder: [String, Number],
-    // field types
-    type: String // mask, number, textarea, phone, money, select, password
-  },
-  data() {
-    return {
-      passwordVisible: true,
-      paddintInputRight: '',
-      paddintInputLeft: ''
-    };
-  },
-  mounted() {
-    this.paddintInputRight = document?.querySelector('.addright')?.clientWidth;
-    this.paddintInputLeft = document?.querySelector('.addleft')?.clientWidth;
-  },
-  computed: {
-    setPadding() {
-      const padding = [];
-      if (this.$slots.left || this.type === 'phone' || this.iconLeft) {
-        padding.push(`padding-left: ${this.paddintInputLeft + 15}px;`);
-      }
-      if (this.$slots.right || this.type === 'password' || this.iconRight) {
-        padding.push(`padding-right: ${this.paddintInputRight + 15}px;`);
-      }
-      return padding.join('');
-    },
-    setAttributes() {
-      return {
-        id: 'input' + this._.uid,
-        placeholder: this.placeholder,
-        maxlength: this.maxlength,
-        disabled: this.disabled,
-        class: ['form-input', this.classInput, { _error: this.error }],
-        style: this.setPadding
-      };
-    },
-    updateValue: {
-      get() {
-        return this.modelValue;
-      },
-      set(value) {
-        this.$emit('update:modelValue', value);
-      }
-    }
-  }
-};
-</script>
 
 <style lang="postcss">
 .form-label {

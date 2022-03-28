@@ -1,3 +1,28 @@
+<script>
+export default {
+  data() {
+    return {
+      languages: [
+        {
+          name: 'O‘zbekcha',
+          value: 'uz'
+        },
+        {
+          name: 'Русский',
+          value: 'ru'
+        }
+      ]
+    };
+  },
+  methods: {
+    switchLang(value) {
+      this.$i18n.locale = value;
+      localStorage.setItem('locale', value);
+    }
+  }
+};
+</script>
+
 <template>
   <el-dropdown class="" :hide-timeout="0" trigger="click" @command="switchLang">
     <div class="flex items-center cursor-pointer gap-8">
@@ -25,27 +50,4 @@
   </el-dropdown>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      languages: [
-        {
-          name: 'O‘zbekcha',
-          value: 'uz'
-        },
-        {
-          name: 'Русский',
-          value: 'ru'
-        }
-      ]
-    };
-  },
-  methods: {
-    switchLang(value) {
-      this.$i18n.locale = value;
-      localStorage.setItem('locale', value);
-    }
-  }
-};
-</script>
+<style lang="postcss"></style>

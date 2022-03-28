@@ -1,9 +1,9 @@
+<script setup lang="ts"></script>
+
 <template>
-	<div class="header container">
-		<div class="header__content"></div>
-	</div>
+  <div class="header container">
+    <div class="header__content"></div>
+  </div>
 </template>
 
-<script>
-export default {};
-</script>
+<style lang="postcss"></style>

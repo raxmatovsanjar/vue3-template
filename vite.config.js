@@ -14,7 +14,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     }),
     ViteWebfontDownload(),
-    viteCompression({ deleteOriginFile: true }),
+    viteCompression({ deleteOriginFile: false }),
     Pages({
       exclude:
         process.env.NODE_ENV === 'production' ? ['**/pages/assets.vue'] : [],

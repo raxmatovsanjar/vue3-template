@@ -1,12 +1,8 @@
-<script>
-export default {
-  layout: 'empty'
-};
-</script>
+<script setup lang="ts"></script>
 
 <template>error</template>
 
-<style></style>
+<style lang="postcss"></style>
 
 <route lang="yaml">
 meta:

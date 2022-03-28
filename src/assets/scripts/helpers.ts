@@ -1,38 +1,29 @@
 import { ElNotification } from 'element-plus';
 
 // paste to clipboard
-export async function paste() {
-  if (navigator?.clipboard) {
-    await navigator.clipboard.readText().then(text => {
-      return text;
-    });
-  } else {
-    alert('Your browser does not support clipboard, change url to localhost');
-  }
+export async function paste(): Promise<string> {
+  return await navigator.clipboard.readText().then(text => {
+    return navigator?.clipboard ? text : '';
+  });
 }
 
 // copy from clipboard
 export async function copy(value: string): Promise<void> {
-  if (navigator?.clipboard) {
-    await navigator.clipboard.writeText(value).then(() => {});
-  } else {
-    alert('Your browser does not support clipboard, change url to localhost');
-  }
+  await navigator?.clipboard?.writeText(value);
 }
 
 // change file to base64
-export function fileToLink(data: File) {
-  if (data) {
-    return URL.createObjectURL(data);
-  }
+export function fileToLink(data: File): string {
+  return URL.createObjectURL(data);
 }
 
 // Return a number with spaces
-export function numberWithSpaces(number: number) {
-  return number && number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+export function numberWithSpaces(number: number): number {
+  return ~~number?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
 // Validate form and show errors with notification
+// todo: optomize this function
 export function validateForm(form: any, name: string = 'form') {
   const formKeys = Object.keys(form.$model);
   const params = form

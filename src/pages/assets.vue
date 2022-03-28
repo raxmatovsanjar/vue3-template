@@ -37,3 +37,5 @@ const components = import.meta.globEager('../components/**/*.vue');
     </div>
   </div>
 </template>
+
+<style lang="postcss"></style>

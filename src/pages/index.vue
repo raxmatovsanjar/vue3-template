@@ -1,7 +1,5 @@
-<script>
-export default {};
-</script>
+<script setup lang="ts"></script>
 
 <template>index</template>
 
-<style></style>
+<style lang="postcss"></style>

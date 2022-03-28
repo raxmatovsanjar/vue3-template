@@ -1,3 +1,26 @@
+<script>
+export default {
+  props: {
+    type: { type: String, default: 'button' },
+    to: String,
+    href: String,
+    blank: Boolean,
+    // icons
+    iconLeft: String,
+    iconRight: String,
+    // styles
+    width: { type: String, default: 'fit-content' },
+    color: { type: String, default: '#000' },
+    bg: { type: String, default: '#fff' }
+  },
+  computed: {
+    makeStyle() {
+      return `--button-width:${this.width};--button-color:${this.color};--button-background:${this.bg};`;
+    }
+  }
+};
+</script>
+
 <template>
   <router-link v-if="to" :to="to" class="button" :style="makeStyle">
     <Icons :name="iconLeft" />
@@ -22,30 +45,7 @@
   </button>
 </template>
 
-<script>
-export default {
-  props: {
-    type: { type: String, default: 'button' },
-    to: String,
-    href: String,
-    blank: Boolean,
-    // icons
-    iconLeft: String,
-    iconRight: String,
-    // styles
-    width: { type: String, default: 'fit-content' },
-    color: { type: String, default: '#000' },
-    bg: { type: String, default: '#fff' }
-  },
-  computed: {
-    makeStyle() {
-      return `--button-width:${this.width};--button-color:${this.color};--button-background:${this.bg};`;
-    }
-  }
-};
-</script>
-
-<style>
+<style lang="postcss">
 .button {
   display: flex;
   align-items: center;

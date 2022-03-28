@@ -1,9 +1,3 @@
-<template>
-  <el-dialog v-bind="{ title, width, top, fullscreen }" v-model="modalActive">
-    <slot></slot>
-  </el-dialog>
-</template>
-
 <script>
 export default {
   props: {
@@ -25,6 +19,12 @@ export default {
   }
 };
 </script>
+
+<template>
+  <el-dialog v-bind="{ title, width, top, fullscreen }" v-model="modalActive">
+    <slot></slot>
+  </el-dialog>
+</template>
 
 <style lang="postcss">
 .el-dialog {

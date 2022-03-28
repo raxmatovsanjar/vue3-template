@@ -1,7 +1,3 @@
-<template>
-  <i v-if="src" v-html="src"></i>
-</template>
-
 <script>
 import icons from '@/json/icons.js';
 export default {
@@ -36,6 +32,10 @@ export default {
   }
 };
 </script>
+
+<template>
+  <i v-if="src" v-html="src"></i>
+</template>
 
 <style lang="postcss">
 i {
