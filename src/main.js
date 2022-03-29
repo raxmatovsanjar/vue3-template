@@ -36,7 +36,7 @@ const i18n = createI18n({
 });
 app.use(i18n);
 
-// Plugin: Maska
+// Plugin: maska
 import Maska from 'maska';
 app.use(Maska);
 

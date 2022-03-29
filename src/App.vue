@@ -1,6 +1,7 @@
 <script>
 import Default from '@/layouts/default.vue';
 import empty from '@/layouts/empty.vue';
+import { onErrorCaptured } from 'vue';
 export default {
   components: {
     Default,
@@ -9,7 +10,7 @@ export default {
   data() {
     return {
       layout: null,
-      pageLoading: true
+      error: false
     };
   },
   watch: {
@@ -17,20 +18,29 @@ export default {
       this.layout = route.meta.layout || 'Default';
     }
   },
-  beforeCreate() {
-    this.pageLoading = true;
-  },
-  mounted() {
-    this.pageLoading = false;
+  created() {
+    onErrorCaptured(e => {
+      console.log(e);
+    });
   }
 };
 </script>
 
 <template>
-  <div v-if="pageLoading" class="loading">Loading...</div>
-  <component v-else :is="layout">
-    <router-view />
-  </component>
+  <RouterView v-slot="{ Component }">
+    <template v-if="Component">
+      <Transition name="scale" mode="out-in">
+        <!-- error content -->
+        <div v-if="error">Error</div>
+        <Suspense v-else>
+          <!-- main content -->
+          <component :is="Component"></component>
+          <!-- loading state -->
+          <template #fallback>Loading...</template>
+        </Suspense>
+      </Transition>
+    </template>
+  </RouterView>
 </template>
 
 <style>

@@ -1,6 +1,6 @@
 <script setup>
 import icons from '@/json/icons.js';
-import { copy } from 'js/helpers.js';
+import { copy } from 'js/helpers.ts';
 const components = import.meta.globEager('../components/**/*.vue');
 </script>
 
@@ -31,7 +31,7 @@ const components = import.meta.globEager('../components/**/*.vue');
         >
           {{ key }}
         </h3>
-        <!-- <component :is="key.match(/\.\/components(.*)\.vue$/)[1]" /> -->
+        <!-- <component :is="key.split('/').at(-1).match(/[A-Z][a-z]+/g).join(' ')" /> -->
         <hr class="mt-5" />
       </div>
     </div>

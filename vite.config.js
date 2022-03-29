@@ -33,10 +33,10 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, '.src/'),
-      img: resolve(__dirname, '.src/assets/images/'),
-      js: resolve(__dirname, '.src/assets/scripts/'),
-      css: resolve(__dirname, '.src/assets/styles/')
+      '@': resolve(__dirname, 'src'),
+      img: resolve(__dirname, 'src/assets/images'),
+      js: resolve(__dirname, 'src/assets/scripts'),
+      css: resolve(__dirname, 'src/assets/styles')
     }
   },
   server: {

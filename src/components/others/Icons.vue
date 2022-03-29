@@ -34,11 +34,11 @@ export default {
 </script>
 
 <template>
-  <i v-if="src" v-html="src"></i>
+  <i class="icon" v-if="src" v-html="src"></i>
 </template>
 
 <style lang="postcss">
-i {
+.icon {
   display: inline-flex;
   & svg {
     width: 100%;

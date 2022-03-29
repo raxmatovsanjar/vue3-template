@@ -1,1 +1,1 @@
-# vue 3 vite tailwind postcss
+# vue3 vite tailwind postcss typescript pinia
