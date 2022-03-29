@@ -72,26 +72,19 @@ export default {
     :class="classLabel"
     :for="'input' + _.uid"
     class="form-label mb-8"
-  >
-    {{ label }}
-  </label>
+  >{{ label }}</label>
   <div v-else-if="label" class="flex items-center justify-between gap-8 mb-8">
-    <label :class="classLabel" :for="'input' + _.uid" class="form-label">
-      {{ label }}
-    </label>
+    <label :class="classLabel" :for="'input' + _.uid" class="form-label">{{ label }}</label>
     <slot name="extra"></slot>
   </div>
   <div class="relative w-full">
     <div class="addleft" v-if="$slots.left || type === 'phone' || iconLeft">
       <slot name="left">
-        <span v-if="type === 'phone'" class="">+998</span>
+        <span v-if="type === 'phone'" class>+998</span>
         <Icons v-else-if="iconLeft" :name="iconLeft" />
       </slot>
     </div>
-    <div
-      class="addright"
-      v-if="$slots.right || type === 'password' || iconRight"
-    >
+    <div class="addright" v-if="$slots.right || type === 'password' || iconRight">
       <slot name="right">
         <Icons
           v-if="type === 'password'"
@@ -131,14 +124,14 @@ export default {
       v-else-if="type === 'phone'"
       type="text"
       v-bind="setAttributes"
-      data-mask="'## ### ## ##'"
+      v-maska="'## ### ## ##'"
       v-model="updateValue"
     />
     <input
       v-else-if="type === 'money'"
       type="text"
       v-bind="setAttributes"
-      data-mask="'#'"
+      v-maska="'#'"
       v-model="updateValue"
     />
     <input
@@ -147,17 +140,12 @@ export default {
       v-bind="setAttributes"
       v-model="updateValue"
     />
-    <input
-      v-else-if="type === 'number'"
-      type="number"
-      v-bind="setAttributes"
-      v-model="updateValue"
-    />
+    <input v-else-if="type === 'number'" type="number" v-bind="setAttributes" v-model="updateValue" />
     <input
       v-else-if="type === 'mask'"
       v-bind="setAttributes"
       type="text"
-      :data-mask="mask"
+      v-maska="mask"
       v-model="updateValue"
     />
     <input v-else type="text" v-bind="setAttributes" v-model="updateValue" />

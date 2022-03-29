@@ -15,7 +15,7 @@ export default {
   },
   watch: {
     $route(route) {
-      this.layout = route.meta.layout || 'Default';
+      this.layout = route.meta.layout || 'default';
     }
   },
   created() {
@@ -43,7 +43,7 @@ export default {
   </RouterView>
 </template>
 
-<style>
+<style lang="postcss">
 .loading {
   position: fixed;
   top: 0;

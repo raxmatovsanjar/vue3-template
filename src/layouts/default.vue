@@ -1,10 +1,10 @@
-<script>
-export default {};
-</script>
+<script setup></script>
 
 <template>
   <Header />
-  <main><slot></slot></main>
+  <main>
+    <slot></slot>
+  </main>
   <Footer />
 </template>
 

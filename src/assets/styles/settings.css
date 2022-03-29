@@ -76,6 +76,8 @@ html {
   #app {
     width: 100%;
     min-height: 100%;
+    display: inline-flex;
+    align-items: baseline;
   }
   ::-webkit-scrollbar {
     width: 5px;
