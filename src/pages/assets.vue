@@ -1,3 +1,4 @@
+/* @vite-ignore */
 <script setup>
 import { defineAsyncComponent } from 'vue'
 import icons from '@/json/icons.js';
