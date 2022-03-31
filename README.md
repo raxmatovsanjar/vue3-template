@@ -1,3 +1,11 @@
-# vue3 vite tailwind postcss typescript pinia
+# vue3 vite
 
-in assets you can see components,images and icons
+Css: Tailwind, Postcss
+
+Js: Typescript
+
+Store: Pinia
+
+Code style: Eslint, Prettier
+
+In assets page you can see components,images and icons
