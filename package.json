@@ -7,7 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
-    "format": "prettier .  --write"
+    "format": "prettier .  --write",
+    "test": "vitest"
   },
   "dependencies": {
     "@vuelidate/core": "^2.0.0-alpha.35",
@@ -35,6 +36,7 @@
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-eslint": "^1.3.0",
     "vite-plugin-pages": "^0.22.0",
-    "vite-plugin-webfont-dl": "^2.0.0"
+    "vite-plugin-webfont-dl": "^2.0.0",
+    "vitest": "^0.8.1"
   }
 }

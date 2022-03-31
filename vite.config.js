@@ -71,4 +71,7 @@ export default defineConfig({
     reportCompressedSize: false,
     brotliSize: false,
   },
+  test: {
+    // ...
+  },
 });
