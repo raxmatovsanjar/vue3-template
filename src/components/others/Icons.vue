@@ -4,12 +4,17 @@ export default {
   props: {
     name: {
       type: String,
-      default: ''
+      default: '',
     },
     color: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
+  },
+  computed: {
+    src() {
+      return icons[this.name];
+    },
   },
   mounted() {
     if (this.color) {
@@ -23,18 +28,11 @@ export default {
       });
     }
   },
-  computed: {
-    src() {
-      if (this.name) {
-        return icons[this.name];
-      }
-    }
-  }
 };
 </script>
 
 <template>
-  <i class="icon" v-if="src" v-html="src"></i>
+  <i v-if="name" class="icon" v-html="src"></i>
 </template>
 
 <style lang="postcss">

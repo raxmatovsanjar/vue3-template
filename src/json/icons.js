@@ -5,5 +5,5 @@ export default {
   <path d='M4.65451 14.4723C3.06751 13.2263 1.72351 11.4063 0.749512 9.1373C1.73351 6.8583 3.08651 5.0283 4.68351 3.7723C6.27051 2.5163 8.10151 1.8343 9.99951 1.8343C11.9085 1.8343 13.7385 2.5263 15.3355 3.7913' stroke='#000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/>
   <path d='M17.4475 5.9908C18.1355 6.9048 18.7405 7.9598 19.2495 9.1368C17.2825 13.6938 13.8065 16.4388 9.99953 16.4388C9.13653 16.4388 8.28553 16.2988 7.46753 16.0258' stroke='#000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/>
   <path d='M17.8868 1.2496L2.11279 17.0236' stroke='#000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/>
-  </svg>`
+  </svg>`,
 };

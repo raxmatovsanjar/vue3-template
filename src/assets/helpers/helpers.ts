@@ -46,7 +46,7 @@ export function validateForm(form: any, name: string = 'form') {
         return ElNotification({
           type: 'error',
           title: 'Error',
-          message: text
+          message: text,
         });
       }
     }

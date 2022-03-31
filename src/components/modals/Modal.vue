@@ -5,18 +5,18 @@ export default {
     title: { type: String, default: 'Modal' },
     width: { type: String, default: '50%' },
     top: { type: String, default: '40vh' },
-    fullscreen: { type: Boolean, default: false }
+    fullscreen: { type: Boolean, default: false },
+  },
+  data() {
+    return {
+      modalActive: this.value,
+    };
   },
   watch: {
     value(value) {
       this.modalActive = value;
-    }
+    },
   },
-  data() {
-    return {
-      modalActive: this.value
-    };
-  }
 };
 </script>
 

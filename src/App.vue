@@ -5,24 +5,24 @@ import { onErrorCaptured } from 'vue';
 export default {
   components: {
     Default,
-    empty
+    empty,
   },
   data() {
     return {
       layout: null,
-      error: false
+      error: false,
     };
   },
   watch: {
     $route(route) {
       this.layout = route.meta.layout || 'default';
-    }
+    },
   },
   created() {
     onErrorCaptured(e => {
       console.log(e);
     });
-  }
+  },
 };
 </script>
 

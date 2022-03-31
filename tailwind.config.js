@@ -16,12 +16,12 @@ module.exports = {
         sm: { max: '640px' },
         md: { max: '768px' },
         lg: { max: '1024px' },
-        xl: { max: '1280px' }
-      }
+        xl: { max: '1280px' },
+      },
     },
     spacing: { ...spacing },
     colors: {
-      black: '#000000'
+      black: '#000000',
     },
     screens: {
       xs: { max: '475px' },
@@ -29,14 +29,12 @@ module.exports = {
       md: { max: '768px' },
       lg: { max: '1024px' },
       xl: { max: '1280px' },
-      ...screens
-    }
+      ...screens,
+    },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp')
-  ],
+  plugins: [require('@tailwindcss/line-clamp')],
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   corePlugins: {
-    preflight: false
-  }
+    preflight: false,
+  },
 };

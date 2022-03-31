@@ -1,6 +1,6 @@
 /* @vite-ignore */
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from 'vue';
 import icons from '@/json/icons.js';
 import { copy } from 'js/helpers.ts';
 const components = import.meta.glob('../components/**/*.vue');
@@ -13,12 +13,14 @@ const images = import.meta.globEager('../assets/images/**/*.*');
     <div class="grid gap-10">
       <hr class="mb-5" />
       <div
-        class="flex items-center justify-around gap-5"
         v-for="(value, key) in icons"
         :key="value"
+        class="flex items-center justify-around gap-5"
       >
-        <div class="cursor-pointer" @click="copy(`<Icons name='${key}'/>`)">{{ key }}:</div>
-        <div class="cursor-pointer" v-html="value" @click="copy(value)"></div>
+        <div class="cursor-pointer" @click="copy(`<Icons name='${key}'/>`)">
+          {{ key }}:
+        </div>
+        <div class="cursor-pointer" @click="copy(value)" v-html="value"></div>
       </div>
       <hr class="mt-5" />
     </div>

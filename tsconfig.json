@@ -1,20 +1,20 @@
 {
-	"compilerOptions": {
-		"target": "esnext",
-		"allowJs": true,
-		"useDefineForClassFields": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"strict": true,
-		"jsx": "preserve",
-		"sourceMap": true,
-		"resolveJsonModule": true,
-		"esModuleInterop": true,
-		"baseUrl": ".",
-		"paths": {
-			"@*": ["./src/*"]
-		}
-	},
-	"include": ["src/**/*.ts"],
-	"exclude": ["node_modules", "dist", "public"]
+  "compilerOptions": {
+    "target": "esnext",
+    "allowJs": true,
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist", "public"]
 }

@@ -5,21 +5,21 @@ export default {
       languages: [
         {
           name: 'O‘zbekcha',
-          value: 'uz'
+          value: 'uz',
         },
         {
           name: 'Русский',
-          value: 'ru'
-        }
-      ]
+          value: 'ru',
+        },
+      ],
     };
   },
   methods: {
     switchLang(value) {
       this.$i18n.locale = value;
       localStorage.setItem('locale', value);
-    }
-  }
+    },
+  },
 };
 </script>
 

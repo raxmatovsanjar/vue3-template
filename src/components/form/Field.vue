@@ -1,7 +1,7 @@
 <script>
 export default {
   props: {
-    modelValue: { default: '' }, // any type can be used
+    modelValue: undefined, // any type can be used
     // select options
     list: { type: Array, default: () => [{ id: 1, name: 'sanjar' }] },
     selectName: { type: String, default: 'name' },
@@ -20,18 +20,15 @@ export default {
     maxlength: { type: [String, Number], default: 100 },
     placeholder: [String, Number],
     // field types
-    type: String // mask, number, textarea, phone, money, select, password
+    type: String, // mask, number, textarea, phone, money, select, password
   },
+  emits: { 'update:modelValue': null },
   data() {
     return {
       passwordVisible: true,
       paddintInputRight: '',
-      paddintInputLeft: ''
+      paddintInputLeft: '',
     };
-  },
-  mounted() {
-    this.paddintInputRight = document?.querySelector('.addright')?.clientWidth;
-    this.paddintInputLeft = document?.querySelector('.addleft')?.clientWidth;
   },
   computed: {
     setPadding() {
@@ -51,7 +48,7 @@ export default {
         maxlength: this.maxlength,
         disabled: this.disabled,
         class: ['form-input', this.classInput, { _error: this.error }],
-        style: this.setPadding
+        style: this.setPadding,
       };
     },
     updateValue: {
@@ -60,9 +57,13 @@ export default {
       },
       set(value) {
         this.$emit('update:modelValue', value);
-      }
-    }
-  }
+      },
+    },
+  },
+  mounted() {
+    this.paddintInputRight = document?.querySelector('.addright')?.clientWidth;
+    this.paddintInputLeft = document?.querySelector('.addleft')?.clientWidth;
+  },
 };
 </script>
 
@@ -72,19 +73,26 @@ export default {
     :class="classLabel"
     :for="'input' + _.uid"
     class="form-label mb-8"
-  >{{ label }}</label>
+  >
+    {{ label }}
+  </label>
   <div v-else-if="label" class="flex items-center justify-between gap-8 mb-8">
-    <label :class="classLabel" :for="'input' + _.uid" class="form-label">{{ label }}</label>
+    <label :class="classLabel" :for="'input' + _.uid" class="form-label">
+      {{ label }}
+    </label>
     <slot name="extra"></slot>
   </div>
   <div class="relative w-full">
-    <div class="addleft" v-if="$slots.left || type === 'phone' || iconLeft">
+    <div v-if="$slots.left || type === 'phone' || iconLeft" class="addleft">
       <slot name="left">
         <span v-if="type === 'phone'" class>+998</span>
         <Icons v-else-if="iconLeft" :name="iconLeft" />
       </slot>
     </div>
-    <div class="addright" v-if="$slots.right || type === 'password' || iconRight">
+    <div
+      v-if="$slots.right || type === 'password' || iconRight"
+      class="addright"
+    >
       <slot name="right">
         <Icons
           v-if="type === 'password'"
@@ -98,18 +106,18 @@ export default {
     </div>
     <textarea
       v-if="type === 'textarea'"
-      type="text"
-      class="!h-auto resize-none"
       v-bind="setAttributes"
       v-model="updateValue"
+      type="text"
+      class="!h-auto resize-none"
     />
     <el-select
-      class="form-select"
       v-else-if="type === 'select'"
       v-model="updateValue"
+      class="form-select"
       :disabled="disabled"
       :placeholder="placeholder"
-      :class="{ _error: this.error }"
+      :class="{ _error: error }"
       :multiple="multiple"
       :filterable="filterable"
     >
@@ -122,33 +130,38 @@ export default {
     </el-select>
     <input
       v-else-if="type === 'phone'"
-      type="text"
       v-bind="setAttributes"
-      v-maska="'## ### ## ##'"
       v-model="updateValue"
+      v-maska="'## ### ## ##'"
+      type="text"
     />
     <input
       v-else-if="type === 'money'"
-      type="text"
       v-bind="setAttributes"
-      v-maska="'#'"
       v-model="updateValue"
+      v-maska="'#'"
+      type="text"
     />
     <input
       v-else-if="type === 'password'"
-      :type="passwordVisible ? 'password' : 'text'"
       v-bind="setAttributes"
       v-model="updateValue"
+      :type="passwordVisible ? 'password' : 'text'"
     />
-    <input v-else-if="type === 'number'" type="number" v-bind="setAttributes" v-model="updateValue" />
+    <input
+      v-else-if="type === 'number'"
+      v-bind="setAttributes"
+      v-model="updateValue"
+      type="number"
+    />
     <input
       v-else-if="type === 'mask'"
       v-bind="setAttributes"
-      type="text"
-      v-maska="mask"
       v-model="updateValue"
+      v-maska="mask"
+      type="text"
     />
-    <input v-else type="text" v-bind="setAttributes" v-model="updateValue" />
+    <input v-else v-bind="setAttributes" v-model="updateValue" type="text" />
   </div>
 </template>
 

@@ -10,7 +10,7 @@ import routes from 'pages-generated';
 import { createRouter, createWebHistory } from 'vue-router';
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 });
 app.use(router);
 
@@ -31,8 +31,8 @@ const i18n = createI18n({
   compositionOnly: false,
   messages: {
     uz,
-    ru
-  }
+    ru,
+  },
 });
 app.use(i18n);
 
