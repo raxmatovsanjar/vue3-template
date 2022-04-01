@@ -6,11 +6,11 @@ const app = createApp(App);
 
 // !Plugins settings
 // Plugin: router
-import routes from 'pages-generated';
+import { routes } from './routes.js';
 import { createRouter, createWebHistory } from 'vue-router';
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+	history: createWebHistory(),
+	routes,
 });
 app.use(router);
 
@@ -24,15 +24,15 @@ import uz from './json/uz.json';
 import ru from './json/ru.json';
 const locale = localStorage.getItem('locale') || 'uz';
 const i18n = createI18n({
-  locale: locale,
-  legacy: false,
-  globalInjection: true,
-  silentFallbackWarn: true,
-  compositionOnly: false,
-  messages: {
-    uz,
-    ru,
-  },
+	locale: locale,
+	legacy: false,
+	globalInjection: true,
+	silentFallbackWarn: true,
+	compositionOnly: false,
+	messages: {
+		uz,
+		ru,
+	},
 });
 app.use(i18n);
 
