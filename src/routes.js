@@ -1,17 +1,13 @@
+// process.env.NODE_ENV === 'production'
 export const routes = [
 	{
 		path: '/assets',
 		meta: { title: 'Assets' },
-		component: () =>
-			import(
-				process.env.NODE_ENV === 'production'
-					? '@/pages/error.vue'
-					: '@/pages/assets.vue'
-			),
+		component: () => import('@/pages/assets.vue'),
 	},
 	{
 		path: '/:pathMatch(.*)*',
-		meta: { title: 'Error' },
+		meta: { title: 'Error', layout: 'empty' },
 		component: () => import('@/pages/error.vue'),
 	},
 	{

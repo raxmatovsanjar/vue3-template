@@ -18,7 +18,7 @@ export default {
 	},
 	mounted() {
 		if (this.color) {
-			this.$el.firstChild.querySelectorAll('path').forEach(item => {
+			this.$el?.firstElementChild?.querySelectorAll('path')?.forEach(item => {
 				if ([...item.attributes].find(attr => attr.localName === 'stroke')) {
 					item.attributes.stroke.value = this.color;
 				}

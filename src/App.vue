@@ -1,45 +1,26 @@
-<script>
-import Default from '@/layouts/default.vue';
-import empty from '@/layouts/empty.vue';
-import { onErrorCaptured } from 'vue';
-export default {
-	components: {
-		Default,
-		empty,
-	},
-	data() {
-		return {
-			layout: null,
-			error: false,
-		};
-	},
-	watch: {
-		$route(route) {
-			this.layout = route.meta.layout || 'default';
-		},
-	},
-	created() {
-		onErrorCaptured(e => {
-			console.log(e);
-		});
-	},
+<script setup>
+/* eslint-disable */
+import { defineAsyncComponent, onErrorCaptured } from 'vue';
+const layouts = {
+	default: defineAsyncComponent(() => import('@/layouts/default.vue')),
+	empty: defineAsyncComponent(() => import('@/layouts/empty.vue')),
 };
+onErrorCaptured(e => {
+	console.log(e);
+});
 </script>
 
 <template>
-	<RouterView v-slot="{ Component }">
-		<template v-if="Component">
-			<Transition name="scale" mode="out-in">
-				<!-- error content -->
-				<div v-if="error">Error</div>
-				<Suspense v-else>
-					<!-- main content -->
+	<div v-if="false">Error</div>
+	<RouterView v-slot="{ Component, route }" v-else>
+		<component :is="layouts[route.meta.layout] || layouts.default">
+			<Transition name="scale" v-if="Component">
+				<Suspense>
 					<component :is="Component"></component>
-					<!-- loading state -->
 					<template #fallback>Loading...</template>
 				</Suspense>
 			</Transition>
-		</template>
+		</component>
 	</RouterView>
 </template>
 
