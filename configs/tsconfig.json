@@ -1,8 +1,6 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"allowJs": true,
-		"useDefineForClassFields": true,
 		"module": "esnext",
 		"moduleResolution": "node",
 		"strict": true,
@@ -10,11 +8,12 @@
 		"sourceMap": true,
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
-		"baseUrl": "./src",
+		"baseUrl": "../",
 		"paths": {
-			"@*": ["./src/*"]
-		}
+			"@*": ["../src/*"]
+		},
+		"types": ["vite/client"]
 	},
-	"include": ["src/**/*.ts"],
-	"exclude": ["node_modules", "dist", "public"]
+	"include": ["../src/**/*.ts", "./.eslintrc.js"],
+	"exclude": ["../node_modules", "../dist", "../public"]
 }

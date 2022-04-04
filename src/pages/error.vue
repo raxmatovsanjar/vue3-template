@@ -2,4 +2,4 @@
 
 <template>error</template>
 
-<style lang="postcss"></style>
+<style></style>

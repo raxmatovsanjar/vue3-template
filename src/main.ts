@@ -1,44 +1,44 @@
 // !Main files import
-import { createApp } from 'vue';
-import './assets/styles/main.css';
-import App from './App.vue';
-const app = createApp(App);
+import { createApp } from "vue";
+import "./assets/styles/main.css";
+import App from "./App.vue";
+export const app = createApp(App);
 
 // !Plugins settings
 // Plugin: router
-import { routes } from './routes.js';
-import { createRouter, createWebHistory } from 'vue-router';
+import { routes } from "./routes";
+import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
-	history: createWebHistory(),
-	routes,
+  history: createWebHistory(),
+  routes,
 });
 app.use(router);
 
 // Plugin: pinia
-import { createPinia } from 'pinia';
+import { createPinia } from "pinia";
 app.use(createPinia());
 
 // Plugin: i18n
-import { createI18n } from 'vue-i18n';
-import uz from './json/uz.json';
-import ru from './json/ru.json';
-const locale = localStorage.getItem('locale') || 'uz';
+import { createI18n } from "vue-i18n";
+import uz from "./json/uz.json";
+import ru from "./json/ru.json";
+const locale = localStorage.getItem("locale") || "uz";
 const i18n = createI18n({
-	locale: locale,
-	legacy: false,
-	globalInjection: true,
-	silentFallbackWarn: true,
-	compositionOnly: false,
-	messages: {
-		uz,
-		ru,
-	},
+  locale: locale,
+  legacy: false,
+  globalInjection: true,
+  silentFallbackWarn: true,
+  compositionOnly: false,
+  messages: {
+    uz,
+    ru,
+  },
 });
 app.use(i18n);
 
 // Plugin: maska
-import Maska from 'maska';
-app.use(Maska);
+// import Maska from 'maska';
+// app.use(Maska);
 
 // End
-app.mount('#app');
+app.mount("#app");

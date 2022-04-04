@@ -2,4 +2,4 @@
 
 <template>index</template>
 
-<style lang="postcss"></style>
+<style></style>
