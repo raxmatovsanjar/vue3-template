@@ -1,5 +1,7 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { defineEmits, ref, computed, onMounted, getCurrentInstance } from "vue";
+const component = getCurrentInstance();
+const emit = defineEmits(["update:modelValue"]);
 const props = defineProps({
   modelValue: undefined, // any type can be used
   // select options
@@ -9,7 +11,7 @@ const props = defineProps({
   multiple: Boolean,
   filterable: Boolean,
   // ---
-  mask: String,
+  maska: String,
   iconLeft: String,
   iconRight: String,
   disabled: Boolean,
@@ -20,48 +22,48 @@ const props = defineProps({
   maxlength: { type: [String, Number], default: 100 },
   placeholder: [String, Number],
   // field types
-  type: String, // mask, number, textarea, phone, money, select, password
+  type: String, // maska, number, textarea, phone, select, password
 });
-const passwordVisible = ref(true);
-const paddingInputRight = ref("");
-const paddingInputLeft = ref("");
+let passwordVisible = ref(true);
+let paddingInputRight = ref("");
+let paddingInputLeft = ref("");
 const setPadding = computed(() => {
   const padding = [];
-  if (this.$slots.left || props.type === "phone" || props.iconLeft) {
-    padding.push(`padding-left: ${paddintInputLeft + 15}px;`);
+  if (component.slots.left || props.type === "phone" || props.iconLeft) {
+    padding.push(`padding-left: ${paddingInputLeft.value + 15}px;`);
   }
-  if (this.$slots.right || props.type === "password" || props.iconRight) {
-    padding.push(`padding-right: ${paddintInputRight + 15}px;`);
+  if (component.slots.right || props.type === "password" || props.iconRight) {
+    padding.push(`padding-right: ${paddingInputRight.value + 15}px;`);
   }
   return padding.join("");
 });
 const setAttributes = computed(() => {
   return {
-    // id: "input" + this._.uid,
+    id: "input" + component.uid,
     placeholder: props.placeholder,
-    maxlength: props.maxlength,
+    maxlength: +props.maxlength,
     disabled: props.disabled,
     class: ["form-input", props.classInput, { _error: props.error }],
-    style: props.setPadding,
+    style: setPadding.value,
   };
 });
-// const updateValue = computed(() => {
-//   get() {
-//          return modelValue;
-//        },
-//        set(value) {
-//          this.$emit("update:modelValue", value);
-//        },
-// });
+const updateValue = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(value) {
+    emit("update:modelValue", value);
+  },
+});
 onMounted(() => {
-  paddintInputRight = document?.querySelector(".addright")?.clientWidth;
-  paddintInputLeft = document?.querySelector(".addleft")?.clientWidth;
+  paddingInputRight.value = document?.querySelector(".addright")?.clientWidth;
+  paddingInputLeft.value = document?.querySelector(".addleft")?.clientWidth;
 });
 </script>
 
 <template>
   <label
-    v-if="label && !$slots.extra"
+    v-if="label && !component.slots.extra"
     :class="classLabel"
     :for="'input' + _.uid"
     class="form-label mb-8"
@@ -75,14 +77,17 @@ onMounted(() => {
     <slot name="extra"></slot>
   </div>
   <div class="relative w-full">
-    <div v-if="$slots.left || type === 'phone' || iconLeft" class="addleft">
+    <div
+      v-if="component.slots.left || type === 'phone' || iconLeft"
+      class="addleft"
+    >
       <slot name="left">
         <span v-if="type === 'phone'" class>+998</span>
         <Icons v-else-if="iconLeft" :name="iconLeft" />
       </slot>
     </div>
     <div
-      v-if="$slots.right || type === 'password' || iconRight"
+      v-if="component.slots.right || type === 'password' || iconRight"
       class="addright"
     >
       <slot name="right">
@@ -128,13 +133,6 @@ onMounted(() => {
       type="text"
     />
     <input
-      v-else-if="type === 'money'"
-      v-bind="setAttributes"
-      v-model="updateValue"
-      v-maska="'#'"
-      type="text"
-    />
-    <input
       v-else-if="type === 'password'"
       v-bind="setAttributes"
       v-model="updateValue"
@@ -147,10 +145,10 @@ onMounted(() => {
       type="number"
     />
     <input
-      v-else-if="type === 'mask'"
+      v-else-if="type === 'maska'"
       v-bind="setAttributes"
       v-model="updateValue"
-      v-maska="mask"
+      v-maska="maska"
       type="text"
     />
     <input v-else v-bind="setAttributes" v-model="updateValue" type="text" />

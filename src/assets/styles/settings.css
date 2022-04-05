@@ -40,7 +40,6 @@ svg * {
   }
 }
 html {
-  transition: all 0.35s ease-in-out;
   width: 100%;
   height: 100%;
   font-family: var(--font-family), sans-serif;
@@ -91,12 +90,12 @@ html {
     background: rgba(37, 100, 255, 0.15);
   }
   /*  hide arrows in input type number */
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-  &[type="number"] {
+  input[type="number"] {
     -moz-appearance: textfield;
   }
 }

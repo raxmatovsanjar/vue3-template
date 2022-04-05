@@ -1,5 +1,4 @@
 <script setup>
-import { ref, watch } from "vue";
 const props = defineProps({
   modelValue: { type: Boolean, default: false },
   title: { type: String, default: "Modal" },
@@ -7,11 +6,14 @@ const props = defineProps({
   top: { type: String, default: "40vh" },
   fullscreen: { type: Boolean, default: false },
 });
-// let modalActive = ref(value);
 </script>
 
 <template>
-  <el-dialog v-bind="{ title, width, top, fullscreen }" v-model="modelValue" @change="$emit('update:modelValue', $event)">
+  <el-dialog
+    v-bind="{ title, width, top, fullscreen }"
+    v-model="modelValue"
+    @close="$emit('update:modelValue', false)"
+  >
     <slot></slot>
   </el-dialog>
 </template>

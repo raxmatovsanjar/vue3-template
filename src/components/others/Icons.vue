@@ -1,12 +1,12 @@
 <script setup>
-import { ref, onMounted, computed, getCurrentInstance } from "vue";
+import { onMounted, computed, getCurrentInstance } from "vue";
 import icons from "~/json/icons.js";
 const props = defineProps({
   name: { type: String, default: "" },
   color: { type: String, default: "" },
 });
 const component = getCurrentInstance();
-let src = computed(() => icons[name]);
+const src = computed(() => icons[props.name]);
 onMounted(() => {
   if (props.color) {
     component.vnode.el?.querySelectorAll("path")?.forEach((item) => {
@@ -25,7 +25,7 @@ onMounted(() => {
   <i v-if="name" class="icon" v-html="src"></i>
 </template>
 
-<!-- <style lang="postcss">
+<style lang="postcss">
 .icon {
   display: inline-flex;
   & svg {
@@ -33,4 +33,4 @@ onMounted(() => {
     height: 100%;
   }
 }
-</style> -->
+</style>
