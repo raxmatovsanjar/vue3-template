@@ -6,7 +6,6 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { ViteWebfontDownload } from "vite-plugin-webfont-dl";
 import eslintPlugin from "vite-plugin-eslint";
-import compressPlugin from "vite-plugin-compression";
 import postcss from "./configs/postcss.config.js";
 
 export default defineConfig({
@@ -20,7 +19,6 @@ export default defineConfig({
       ),
     }),
     ViteWebfontDownload(),
-    compressPlugin({ deleteOriginFile: false }),
     eslintPlugin(
       { include: "./configs/eslintrc.js" },
       { include: "./configs/prettierrc.js" }

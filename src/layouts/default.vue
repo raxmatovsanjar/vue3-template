@@ -1,4 +1,4 @@
-<script setup lang="ts"></script>
+<script setup></script>
 
 <template>
   <Header />
@@ -8,10 +8,4 @@
   <Footer />
 </template>
 
-<style>
-#app {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 100%;
-}
-</style>
+<style></style>
