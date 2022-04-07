@@ -9,7 +9,7 @@ import eslintPlugin from "vite-plugin-eslint";
 import compressPlugin from "vite-plugin-compression";
 import postcss from "./configs/postcss.config.js";
 
-function configCompressPlugin(compress = "none", deleteOriginFile = true) {
+function configCompressPlugin(compress = "brotli", deleteOriginFile = true) {
   // 'gzip', 'brotli', 'none'
   const plugins = [];
   if (compress === "gzip") {

@@ -1,4 +1,4 @@
-export const routes: any = [
+export const routes = [
   {
     path: "/:pathMatch(.*)*",
     meta: { title: "Error", layout: "empty" },
@@ -10,7 +10,6 @@ export const routes: any = [
     component: () => import("~/pages/index.vue"),
   },
 ];
-// @ts-ignore: Unreachable code error
 if (import.meta.env.DEV) {
   routes.push({
     path: "/assets",
