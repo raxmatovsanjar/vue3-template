@@ -9,29 +9,6 @@ import eslintPlugin from "vite-plugin-eslint";
 import compressPlugin from "vite-plugin-compression";
 import postcss from "./configs/postcss.config.js";
 
-function configCompressPlugin(compress = "none", deleteOriginFile = true) {
-  // 'gzip', 'brotli', 'none'
-  const plugins = [];
-  if (compress === "gzip") {
-    plugins.push(
-      compressPlugin({
-        ext: ".gz",
-        deleteOriginFile,
-      })
-    );
-  }
-  if (compress === "brotli") {
-    plugins.push(
-      compressPlugin({
-        ext: ".br",
-        algorithm: "brotliCompress",
-        deleteOriginFile,
-      })
-    );
-  }
-  return plugins;
-}
-
 export default defineConfig({
   plugins: [
     vue(),
@@ -43,7 +20,7 @@ export default defineConfig({
       ),
     }),
     ViteWebfontDownload(),
-    configCompressPlugin(),
+    compressPlugin({ deleteOriginFile: false }),
     eslintPlugin(
       { include: "./configs/eslintrc.js" },
       { include: "./configs/prettierrc.js" }
