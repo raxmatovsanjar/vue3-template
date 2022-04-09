@@ -1,11 +1,19 @@
 <script setup></script>
 
 <template>
-  <Header />
-  <main>
-    <slot></slot>
-  </main>
-  <Footer />
+	<div class="wrapper">
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</div>
 </template>
 
-<style></style>
+<style>
+.wrapper {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-template-columns: 100%;
+}
+</style>

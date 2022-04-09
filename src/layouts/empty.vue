@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <slot></slot>
+	<slot />
 </template>
 
 <style></style>

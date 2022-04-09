@@ -8,4 +8,4 @@ Store: Pinia
 
 Code style: Eslint, Prettier
 
-In assets page you can see components,images and icons
+In assets -> atuo import components, images and icons

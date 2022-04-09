@@ -1,27 +1,27 @@
 <script setup>
 const props = defineProps({
-  modelValue: { type: Boolean, default: false },
-  title: { type: String, default: "Modal" },
-  width: { type: String, default: "50%" },
-  top: { type: String, default: "40vh" },
-  fullscreen: { type: Boolean, default: false },
+	modelValue: { type: Boolean, default: false },
+	title: { type: String, default: 'Modal' },
+	width: { type: String, default: '50%' },
+	top: { type: String, default: '40vh' },
+	fullscreen: { type: Boolean, default: false },
 });
 </script>
 
 <template>
-  <el-dialog
-    v-bind="{ title, width, top, fullscreen }"
-    v-model="modelValue"
-    @close="$emit('update:modelValue', false)"
-  >
-    <slot></slot>
-  </el-dialog>
+	<el-dialog
+		v-bind="{ title, width, top, fullscreen }"
+		v-model="modelValue"
+		@close="$emit('update:modelValue', false)"
+	>
+		<slot />
+	</el-dialog>
 </template>
 
 <style lang="postcss">
 .el-dialog {
-  @media (max-width: 550px) {
-    width: 90% !important;
-  }
+	@media (max-width: 550px) {
+		width: 90% !important;
+	}
 }
 </style>
