@@ -3,13 +3,13 @@
 // Read more: https://github.com/vuejs/vue-next/pull/3399
 
 declare module 'vue' {
-  export interface GlobalComponents {
-    Field: typeof import('./../components/form/Field.vue')['default']
-    Footer: typeof import('./../components/layout/Footer.vue')['default']
-    Header: typeof import('./../components/layout/Header.vue')['default']
-    Icons: typeof import('./../components/others/Icons.vue')['default']
-    Modal: typeof import('./../components/modals/Modal.vue')['default']
-  }
+	export interface GlobalComponents {
+		Field: typeof import('./../components/form/Field.vue')['default'];
+		Footer: typeof import('./../components/layout/Footer.vue')['default'];
+		Header: typeof import('./../components/layout/Header.vue')['default'];
+		Icons: typeof import('./../components/others/Icons.vue')['default'];
+		Modal: typeof import('./../components/modals/Modal.vue')['default'];
+	}
 }
 
-export { }
+export {};

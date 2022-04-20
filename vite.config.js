@@ -6,7 +6,6 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { ViteWebfontDownload } from 'vite-plugin-webfont-dl';
 import eslintPlugin from 'vite-plugin-eslint';
-import postcss from './postcss.config.js';
 
 export default defineConfig({
 	plugins: [
@@ -28,9 +27,6 @@ export default defineConfig({
 			js: resolve(__dirname, 'src/assets/helpers'),
 			css: resolve(__dirname, 'src/assets/styles'),
 		},
-	},
-	css: {
-		postcss,
 	},
 	server: {
 		open: true,
