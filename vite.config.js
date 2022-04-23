@@ -17,7 +17,9 @@ export default defineConfig({
 				'components.d.ts',
 			),
 		}),
-		ViteWebfontDownload(),
+		ViteWebfontDownload([
+			'https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap',
+		]),
 		eslintPlugin(),
 	],
 	resolve: {

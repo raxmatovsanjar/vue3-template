@@ -1,12 +1,9 @@
 <script setup>
-import { defineAsyncComponent, onErrorCaptured } from 'vue';
+import { defineAsyncComponent } from 'vue';
 const layouts = {
 	default: defineAsyncComponent(() => import('~/layouts/default.vue')),
 	empty: defineAsyncComponent(() => import('~/layouts/empty.vue')),
 };
-onErrorCaptured(e => {
-	console.log(e);
-});
 </script>
 
 <template>

@@ -13,7 +13,6 @@ module.exports = {
 	extends: ['plugin:vue/vue3-recommended', 'eslint:recommended', 'prettier'],
 	ignorePatterns: ['**/*.ts'],
 	rules: {
-		// 'prettier/pretieer': 'error',
 		'vue/require-default-prop': 'off',
 		'vue/multi-word-component-names': 0,
 		'vue/valid-template-root': 0,
