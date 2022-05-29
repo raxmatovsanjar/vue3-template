@@ -14,6 +14,7 @@ module.exports = {
 	ignorePatterns: ['**/*.ts'],
 	rules: {
 		'vue/require-default-prop': 'off',
+		'no-unused-vars': 'off',
 		'vue/multi-word-component-names': 0,
 		'vue/valid-template-root': 0,
 	},

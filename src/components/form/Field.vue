@@ -1,5 +1,12 @@
 <script setup>
-import { defineEmits, ref, computed, onMounted, getCurrentInstance } from 'vue';
+import {
+	defineProps,
+	defineEmits,
+	ref,
+	computed,
+	onMounted,
+	getCurrentInstance,
+} from 'vue';
 const component = getCurrentInstance();
 const emit = defineEmits(['update:modelValue']);
 const props = defineProps({

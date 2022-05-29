@@ -8,17 +8,6 @@ for (let i = 500; i >= 0; i--) {
 }
 module.exports = {
 	theme: {
-		container: {
-			center: true,
-			padding: '15rem',
-			screens: {
-				xs: { max: '100%' },
-				sm: { max: '640px' },
-				md: { max: '768px' },
-				lg: { max: '1024px' },
-				xl: { max: '1280px' },
-			},
-		},
 		spacing: { ...spacing },
 		colors: {
 			black: '#000000',
@@ -30,6 +19,17 @@ module.exports = {
 			lg: { max: '1024px' },
 			xl: { max: '1280px' },
 			...screens,
+		},
+		container: {
+			center: true,
+			padding: '15rem',
+			maxWidth: {
+				// xs: { max: '100%' },
+				// sm: { max: '640px' },
+				// md: { max: '768px' },
+				// lg: { max: '1024px' },
+				'1280px': '1280px',
+			},
 		},
 	},
 	plugins: [require('@tailwindcss/line-clamp')],

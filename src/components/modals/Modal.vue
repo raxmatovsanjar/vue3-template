@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+import { defineProps, defineEmits } from 'vue';
+const emits = defineEmits(['update:modelValue']);
 const props = defineProps({
 	modelValue: { type: Boolean, default: false },
 	title: { type: String, default: 'Modal' },
@@ -11,10 +13,10 @@ const props = defineProps({
 <template>
 	<el-dialog
 		v-bind="{ title, width, top, fullscreen }"
-		v-model="modelValue"
+		:value="modelValue"
 		@close="$emit('update:modelValue', false)"
 	>
-		<slot />
+		<slot></slot>
 	</el-dialog>
 </template>
 
