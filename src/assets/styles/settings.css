@@ -1,12 +1,25 @@
 /* !<Info>============================================================================================ */
-/*  Find and download fonts */
-/*  To convert fonts go to: https://transfonter.org/ */
-/*  Then import the fonts style css in the main.scss file. */
+/*  To convert fonts: https://transfonter.org/ */
 /*  font-weight:100-thin,200-UltraLite,300-light,400-normal-regular,500-medium,600-semibold,700-bold,800-Heavy,900-black */
 /*  Try to use it: */
 /*  line-height: calc( line-height / font-size * 100% ); */
 /*  https://picsum.photos/200/200/ for images */
 /* !</Info>============================================================================================ */
+
+/* !<Mixins>=========================================================================================== */
+@define-mixin adaptiv($type, $pcSize, $mobSize) {
+  $size: calc(
+    ($mobSize + px) + ($pcSize - $mobSize) * ((100vw - 320px) / (1440 - 320))
+  );
+    $type: $pcSize + px;
+    @media (max-width: 1440px) {
+      $type: $size;
+    }
+}
+.transition {
+@mixin 
+}
+/* !</Mixins>========================================================================================== */
 
 /* !<Helper-Styles>==================================================================================== */
 .scale-enter-active,
@@ -22,12 +35,6 @@
 svg,
 svg * {
 	transition: all 0.35s ease-in-out;
-}
-.transition {
-	transition: all 0.35s ease-in-out !important;
-}
-.center {
-	@apply flex items-center justify-center;
 }
 /* !<Helper-Styles>==================================================================================== */
 

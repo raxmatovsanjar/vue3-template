@@ -5,5 +5,11 @@
 @import 'settings.css';
 @import 'global.css';
 @layer components {
+  .transition {
+	  transition: all 0.35s ease-in-out !important;
+  }
+  .center {
+    @apply flex items-center justify-center;
+  }
 }
 /* !</Import Styles>================================================================================ */

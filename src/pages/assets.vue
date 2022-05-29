@@ -30,7 +30,7 @@ function getSize(url) {
 	&nbsp;
 	<a href="#components">components</a>
 	&nbsp;
-	<div class="container">
+	<div class="container transition">
 		<h2 id="icons" class="text-[60rem] font-bold my-30">Icons</h2>
 		<div class="grid gap-10">
 			<hr class="mb-5" />
