@@ -2,7 +2,7 @@
 
 <template>
 	<div class="footer container">
-		<div class="footer__content" />
+		<div class="footer__content">Footer</div>
 	</div>
 </template>
 

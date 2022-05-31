@@ -4,11 +4,12 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Breadcrumb: typeof import('./../components/others/Breadcrumb.vue')['default']
     Field: typeof import('./../components/form/Field.vue')['default']
     Footer: typeof import('./../components/layout/Footer.vue')['default']
     Header: typeof import('./../components/layout/Header.vue')['default']
-    Icons: typeof import('./../components/others/Icons.vue')['default']
-    Modal: typeof import('./../components/modals/Modal.vue')['default']
+    Icons: typeof import('./../components/actions/Icons.vue')['default']
+    Modal: typeof import('./../components/actions/Modal.vue')['default']
   }
 }
 

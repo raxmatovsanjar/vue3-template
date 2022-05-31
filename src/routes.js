@@ -13,7 +13,7 @@ export const routes = [
 if (import.meta.env.DEV) {
 	routes.push({
 		path: '/assets',
-		meta: { title: 'Assets' },
+		meta: { title: 'Assets', layout: 'empty' },
 		component: () => import('~/pages/assets.vue'),
 	});
 }

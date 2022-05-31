@@ -2,7 +2,7 @@
 import { defineAsyncComponent } from 'vue';
 import icons from '~/json/icons.js';
 import { copy } from 'js/helpers.ts';
-const components = import.meta.glob('../components/**/*.vue');
+const components = import.meta.globEager('../components/**/*.vue');
 const images = import.meta.globEager('../assets/images/**/*.*');
 const importedImages = [];
 for (const key in images) {
@@ -30,7 +30,7 @@ function getSize(url) {
 	&nbsp;
 	<a href="#components">components</a>
 	&nbsp;
-	<div class="container transition">
+	<div class="container">
 		<h2 id="icons" class="text-[60rem] font-bold my-30">Icons</h2>
 		<div class="grid gap-10">
 			<hr class="mb-5" />
@@ -65,11 +65,7 @@ function getSize(url) {
 				<hr class="mb-5" />
 				<h3
 					class="text-center mb-10 cursor-pointer"
-					@click="
-						$el.ownerDocument.defaultView.console.log(
-							defineAsyncComponent(() => /* @vite-ignore */ import(key)),
-						)
-					"
+					@click="$el.ownerDocument.defaultView.console.dir(value)"
 				>
 					{{ key }}
 				</h3>

@@ -6,38 +6,6 @@
 /*  https://picsum.photos/200/200/ for images */
 /* !</Info>============================================================================================ */
 
-/* !<Mixins>=========================================================================================== */
-@define-mixin adaptiv($type, $pcSize, $mobSize) {
-  $size: calc(
-    ($mobSize + px) + ($pcSize - $mobSize) * ((100vw - 320px) / (1440 - 320))
-  );
-    $type: $pcSize + px;
-    @media (max-width: 1440px) {
-      $type: $size;
-    }
-}
-.transition {
-@mixin 
-}
-/* !</Mixins>========================================================================================== */
-
-/* !<Helper-Styles>==================================================================================== */
-.scale-enter-active,
-.scale-leave-active {
-	transition: all 0.4s ease-in-out;
-}
-.scale-enter,
-.scale-leave-to {
-	opacity: 0;
-	transform: scale(0.95);
-	transition: all 0.4s ease-in-out;
-}
-svg,
-svg * {
-	transition: all 0.35s ease-in-out;
-}
-/* !<Helper-Styles>==================================================================================== */
-
 /* !<Settings-Styles>================================================================================== */
 :root {
 	--font-family: 'Roboto';
@@ -69,6 +37,9 @@ html {
 		box-sizing: border-box;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+	}
+	svg {
+		transition: all 0.35s ease-in-out;
 	}
 	& body {
 		font-size: 16px;
