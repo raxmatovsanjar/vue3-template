@@ -8,7 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 json/components.ts
-page/assets.vue
 node_modules
 dist
 dist-ssr
