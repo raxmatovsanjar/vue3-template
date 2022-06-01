@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="">
 import { onMounted, computed, getCurrentInstance } from 'vue';
 import icons from '~/json/icons.js';
 const props = defineProps({

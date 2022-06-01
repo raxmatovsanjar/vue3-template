@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="">
 import { defineAsyncComponent } from 'vue';
 const layouts = {
 	default: defineAsyncComponent(() => import('~/layouts/default.vue')),

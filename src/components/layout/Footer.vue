@@ -1,4 +1,4 @@
-<script setup lang="ts"></script>
+<script setup lang=""></script>
 
 <template>
 	<div class="footer container">

@@ -1,5 +1,5 @@
 <script setup lang=""></script>
 
-<template>index</template>
+<template></template>
 
 <style></style>

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="">
 import {
 	defineProps,
 	defineEmits,
