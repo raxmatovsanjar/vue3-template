@@ -1,4 +1,4 @@
-<script setup></script>
+<script setup lang=""></script>
 
 <template>index</template>
 

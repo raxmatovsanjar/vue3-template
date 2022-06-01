@@ -4,7 +4,9 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Breadcrumb: typeof import('./../components/others/Breadcrumb.vue')['default']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElOption: typeof import('element-plus/es')['ElOption']
+    ElSelect: typeof import('element-plus/es')['ElSelect']
     Field: typeof import('./../components/form/Field.vue')['default']
     Footer: typeof import('./../components/layout/Footer.vue')['default']
     Header: typeof import('./../components/layout/Header.vue')['default']

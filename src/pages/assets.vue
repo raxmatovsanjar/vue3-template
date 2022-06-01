@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="">
 import { defineAsyncComponent } from 'vue';
 import icons from '~/json/icons.js';
 import { copy } from 'js/helpers.ts';
