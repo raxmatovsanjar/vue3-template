@@ -1,5 +1,5 @@
-<script setup lang=""></script>
+<script setup lang="ts"></script>
 
-<template></template>
+<template>index</template>
 
 <style></style>

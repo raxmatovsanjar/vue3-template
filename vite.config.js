@@ -12,10 +12,7 @@ export default defineConfig({
 		vue(),
 		Components({
 			resolvers: [ElementPlusResolver()],
-			dts: path.resolve(
-				path.resolve(__dirname, 'src/json/'),
-				'components.d.ts',
-			),
+			dts: path.resolve(path.resolve(__dirname, 'src/'), 'components.d.ts'),
 		}),
 		ViteWebfontDownload([
 			'https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap',
@@ -25,13 +22,15 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'~': resolve(__dirname, 'src'),
-			img: resolve(__dirname, 'src/assets/images'),
+			components: resolve(__dirname, 'src/components'),
 			js: resolve(__dirname, 'src/assets/helpers'),
+			img: resolve(__dirname, 'src/assets/images'),
 			css: resolve(__dirname, 'src/assets/styles'),
 		},
 	},
 	server: {
 		open: true,
+		port: 4000,
 	},
 	build: {
 		reportCompressedSize: false,

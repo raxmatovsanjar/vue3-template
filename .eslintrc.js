@@ -1,21 +1,25 @@
 module.exports = {
+	root: true,
 	env: {
-		browser: true,
-		es2021: true,
 		node: true,
+		es2021: true,
 		'vue/setup-compiler-macros': true,
 	},
-	root: true,
+	extends: [
+		'eslint:recommended',
+		'@vue/prettier',
+		'@vue/typescript/recommended',
+		'plugin:vue/vue3-essential',
+		'plugin:storybook/recommended',
+		'plugin:markdown/recommended',
+	],
 	parserOptions: {
-		ecmaVersion: 2022,
-		sourceType: 'module',
+		ecmaVersion: 2020,
 	},
-	extends: ['plugin:vue/vue3-recommended', 'eslint:recommended', 'prettier'],
-	ignorePatterns: ['**/*.ts'],
+	ignorePatterns: ['!/.storybook'],
 	rules: {
-		'vue/require-default-prop': 'off',
-		'no-unused-vars': 'off',
-		'vue/multi-word-component-names': 0,
-		'vue/valid-template-root': 0,
+		'no-console': 'warn',
+		'@typescript-eslint/explicit-module-boundary-types': 'off',
+		'vue/multi-word-component-names': 'warn',
 	},
 };

@@ -1,6 +1,6 @@
 <script setup lang="">
 import { defineAsyncComponent } from 'vue';
-import icons from '~/json/icons.js';
+import icons from '~/json/icons.json';
 import { copy } from 'js/helpers.ts';
 const components = import.meta.globEager('../components/**/*.vue');
 const images = import.meta.globEager('../assets/images/**/*.*');

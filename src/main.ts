@@ -20,7 +20,7 @@ app.use(createPinia());
 
 // Plugin: i18n
 import { createI18n } from 'vue-i18n';
-import uz from './json/uz.json';
+import uz from '~/json/uz.json';
 const locale = localStorage.getItem('locale') || 'uz';
 const i18n = createI18n({
 	locale: locale,
@@ -34,17 +34,18 @@ const i18n = createI18n({
 });
 app.use(i18n);
 
-// Plugin: maska
-import Maska from 'maska';
-app.use(Maska);
-
 // Plugin: axios
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+const token = localStorage.getItem('token');
 app.use(
 	VueAxios,
 	axios.create({
 		baseURL: 'https://jsonplaceholder.typicode.com/',
+		headers: {
+			Authorization: token ? `Bearer ${token}` : '',
+			AcceptLanguage: locale,
+		},
 	}),
 );
 app.provide('axios', app.config.globalProperties.axios);
