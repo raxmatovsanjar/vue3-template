@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"jsx": "preserve",
 		"removeComments": true,
 		"forceConsistentCasingInFileNames": true,
 		"target": "esnext",
@@ -22,5 +23,5 @@
 		"lib": ["esnext", "dom", "dom.iterable", "scripthost"]
 	},
 	"include": ["vite.config.*", "src/**/*", "src/**/*.vue"],
-	"exclude": ["node_modules", "**/*.stories.ts"]
+	"exclude": ["node_modules"]
 }

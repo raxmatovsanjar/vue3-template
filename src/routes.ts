@@ -10,10 +10,3 @@ export const routes = [
 		component: () => import('/src/pages/index.vue'),
 	},
 ];
-if (import.meta.env.DEV) {
-	routes.push({
-		path: '/assets',
-		meta: { title: 'Assets', layout: 'empty' },
-		component: () => import('/src/pages/assets.vue'),
-	});
-}
