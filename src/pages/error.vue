@@ -1,10 +1,5 @@
-<script setup lang="ts">
-import Icon from '~/stories/Icon.vue';
-</script>
+<script setup></script>
 
-<template>
-	error
-	<Icon name="eye" />
-</template>
+<template>error</template>
 
 <style></style>

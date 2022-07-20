@@ -1,15 +1,13 @@
-<script setup lang="ts">
+<script setup>
 import { onMounted, computed } from 'vue';
 import icons from '~/json/icons.json';
 
-export interface Props {
-	name: string;
-	color?: string;
-	fill?: string;
-	stroke?: string;
-}
-
-const props = withDefaults(defineProps<Props>(), {});
+const props = defineProps({
+	name: { type: String, default: '' },
+	color: { type: String, default: '' },
+	fill: { type: String, default: '' },
+	stroke: { type: String, default: '' },
+});
 const src = computed(() => icons[props.name]);
 
 onMounted(() => {

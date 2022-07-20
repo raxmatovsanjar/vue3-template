@@ -1,10 +1,5 @@
-<script setup lang="ts">
-import Icon from '~/stories/Icon.vue';
-</script>
+<script setup></script>
 
-<template>
-	index
-	<Icon name="eye1" fill="#fff" />
-</template>
+<template></template>
 
 <style></style>

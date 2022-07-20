@@ -1,35 +1,33 @@
-import { App } from 'vue';
 import { routes } from '~/routes';
 import { createRouter, createWebHistory } from 'vue-router';
-import { createPinia } from 'pinia';
 import { createI18n } from 'vue-i18n';
 import uz from '~/json/uz.json';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
 // paste to clipboard
-export async function paste(): Promise<string> {
+export async function paste() {
 	return await navigator.clipboard.readText().then(text => {
 		return navigator?.clipboard ? text : '';
 	});
 }
 
 // copy from clipboard
-export async function copy(value: string): Promise<void> {
+export async function copy(value) {
 	await navigator?.clipboard?.writeText(value);
 }
 
 // change file to base64
-export function fileToLink(data: File): string {
+export function fileToLink(data) {
 	return URL.createObjectURL(data);
 }
 
 // Return a number with spaces
-export function numberWithSpaces(number: number): string {
+export function numberWithSpaces(number) {
 	return number?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
-export function definePlugins(app: App): App {
+export function definePlugins(app) {
 	// Define your plugins here with app.use. It is required for storybook support.
 
 	// Plugin: router
@@ -38,9 +36,6 @@ export function definePlugins(app: App): App {
 		routes,
 	});
 	app.use(router);
-
-	// Plugin: pinia
-	app.use(createPinia());
 
 	// Plugin: i18n
 	const locale = localStorage.getItem('locale') || 'uz';
